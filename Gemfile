@@ -21,5 +21,6 @@ group :development, :test do
   gem 'capybara'
   gem 'rspec-rails'
   gem 'awesome_print'
+  gem 'database_cleaner'
 end
 
