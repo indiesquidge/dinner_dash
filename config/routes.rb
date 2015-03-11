@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get '/menu', to: 'items#index'
+  get "/menu", to: "items#index"
 end

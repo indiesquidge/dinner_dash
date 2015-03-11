@@ -42,5 +42,4 @@ RSpec.describe User, type: :model do
     user = create(:user)
     expect(user.role).to eq("default")
   end
->>>>>>> 535735f4aa2b4018dbff5ed97d638c58543e9fc4
 end
