@@ -12,6 +12,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'unicorn'
 gem 'bcrypt'
 gem 'money-rails'
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+
 
 group :development, :test do
   gem 'byebug'
@@ -21,7 +24,6 @@ group :development, :test do
   gem 'capybara'
   gem 'rspec-rails'
   gem 'awesome_print'
+  gem "factory_girl_rails"
   gem 'database_cleaner'
-  gem 'factory_girl_rails'
 end
-
