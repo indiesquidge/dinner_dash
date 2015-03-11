@@ -1,24 +1,24 @@
 require "rails_helper"
 
-RSpec.describe Status, type: :model do
+RSpec.describe ItemOrder, type: :model do
   describe 'is valid' do
-    xit 'has a current type' do
-      status = create(:status)
-      expect(status.current_type).to eq("Paid")
+    it 'has a default quantity' do
+      item_order = create(:item_order)
+      expect(item_order.quantity).to eq(1)
     end
 
-    xit 'can be saved' do
-      status = build(:status)
-      status.save
-      expect(status.id).to be_truthy
+    it 'can be saved' do
+      item_order = build(:item_order)
+      item_order.save
+      expect(item_order.id).to be_truthy
     end
   end
 
   describe 'it is invalid' do
-    xit 'cannot be saved without a current_type' do
-      status = build(:status, current_type: nil)
-      status.save
-      expect(status.id).to be_nil
+    it 'cannot be saved with a quantity of 0' do
+      item_order = build(:item_order, quantity: 0)
+      item_order.save
+      expect(item_order.id).to be_nil
     end
   end
 end
