@@ -33,13 +33,13 @@ RSpec.describe User, type: :model do
     expect(user.orders).to eq([order])
   end
 
-  # it "has a role of standard by default" do
-  #   user = create(:user)
-  #   expect(user.role).to eq("standard")
-  # end
-  #
-  # it "is invalid without a role" do
-  #   user = build(:user, role: nil)
-  #   expect(user).not_to be_valid
-  # end
+  it "is invalid without a role" do
+    user = build(:user, role: nil)
+    expect(user).not_to be_valid
+  end
+
+  it "has an initial role of default" do
+    user = create(:user)
+    expect(user.role).to eq("default")
+  end
 end
