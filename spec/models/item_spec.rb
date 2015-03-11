@@ -2,37 +2,36 @@ require "rails_helper"
 require "support/factory_girl"
 
 RSpec.describe Item, type: :model do
-
-  it "is invalid without a name" do
-    item = Item.create(description: "A salted caramel ice cream base with chopped peanut butter cups", price: 600)
-    expect(item).to_not be_valid
-  end
-
-  it "is invalid without a description" do
-    item = Item.create(name: "Salted Caramel Peanut Butter Cup", price: 600)
-    expect(item).to_not be_valid
-  end
-
-  it "is invalid without a price" do
-    item = Item.create(name: "Salted Caramel Peanut Butter Cup", description: "A salted caramel ice cream base with chopped peanut butter cups")
-    expect(item).to_not be_valid
-  end
-
-  it "is not retired by default" do
-    item = Item.create(name: "Salted Caramel Peanut Butter Cup", description: "A salted caramel ice cream base with chopped peanut butter cups", price: 600)
-    expect(item.retired).to be_falsey
-  end
-
-  it 'is valid when created with factory_girl' do
+  it 'is valid' do
     item = create(:item)
     expect(item).to be_valid
   end
 
+  it "is invalid without a name" do
+    item = build(:item, name: nil)
+    expect(item).to_not be_valid
+  end
+
+  it "is invalid without a description" do
+    item = build(:item, description: nil)
+    expect(item).to_not be_valid
+  end
+
+  it "is invalid without a price" do
+    item = build(:item, price: nil)
+    expect(item).to_not be_valid
+  end
+
+  it "is not retired by default" do
+    item = create(:item)
+    expect(item.retired).to eq(false)
+  end
+
   it "name must be unique" do
-    item1 = Item.create(name: "Salted Caramel Peanut Butter Cup", description: "A salted caramel ice cream base with chopped peanut butter cups", price: 600)
-    item2 = Item.create(name: "Salted Caramel Peanut Butter Cup", description: "A salted caramel ice cream base with chopped peanut butter cups", price: 600)
+    item1 = create(:item)
+    item2 = build(:item)
+    item2.save
     expect(item1).to be_valid
     expect(item2).to_not be_valid
   end
-
 end

@@ -2,19 +2,14 @@ require "rails_helper"
 require "support/factory_girl"
 
 RSpec.describe Category, type: :model do
-  it "is invalid without a name" do
-    category = Category.create
-    expect(category).to_not be_valid
-  end
-
-  it "requires a name to be valid" do
-    category = Category.create(name: "Specials")
-    expect(category).to be_valid
-  end
-
-  it "is valid when created with factory_girl" do
+  it "is valid" do
     category = create(:category)
     expect(category).to be_valid
+  end
+
+  it "is invalid without a name" do
+    category = build(:category, name: nil)
+    expect(category).to_not be_valid
   end
 
   it "name has a maximum of 42 characters" do
