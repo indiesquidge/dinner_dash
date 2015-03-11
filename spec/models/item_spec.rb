@@ -29,8 +29,9 @@ RSpec.describe Item, type: :model do
   end
 
   it "name must be unique" do
-    item1 = item = Item.create(name: "Salted Caramel Peanut Butter Cup", description: "A salted caramel ice cream base with chopped peanut butter cups", price: 600)
-    item2 = item = Item.create(name: "Salted Caramel Peanut Butter Cup", description: "A salted caramel ice cream base with chopped peanut butter cups", price: 600)
+    item1 = Item.create(name: "Salted Caramel Peanut Butter Cup", description: "A salted caramel ice cream base with chopped peanut butter cups", price: 600)
+    item2 = Item.create(name: "Salted Caramel Peanut Butter Cup", description: "A salted caramel ice cream base with chopped peanut butter cups", price: 600)
+    expect(item1).to be_valid
     expect(item2).to_not be_valid
   end
 

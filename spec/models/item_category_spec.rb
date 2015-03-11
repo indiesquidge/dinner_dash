@@ -23,5 +23,4 @@ RSpec.describe ItemCategory, type: :model do
     expect(ItemCategory.first.item_id).to eq(1)
     expect(ItemCategory.first.category_id).to eq(1)
   end
-
 end
