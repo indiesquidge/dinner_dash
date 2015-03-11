@@ -26,4 +26,10 @@ RSpec.describe Category, type: :model do
     expect(category2).to be_valid
   end
 
+  it "requires a unique name" do
+    category1 = Category.create(name: "Specials")
+    category2 = Category.create(name: "Specials")
+    expect(category2).to_not be_valid
+  end
+
 end
