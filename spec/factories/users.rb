@@ -6,3 +6,4 @@ FactoryGirl.define do
     password   "hello"
   end
 end
+
