@@ -1,0 +1,10 @@
+<h1>Menu</h1>
+
+<% @items.each do |item| %>
+  <div class="col-sm-4">
+    <%= item.name %>
+    <% item.categories.each do |item_category| %>
+    <p><%= link_to item_category.display_name, menu_category_path(item_category) %></p>
+    <% end  %>
+  </div>
+<% end %>
