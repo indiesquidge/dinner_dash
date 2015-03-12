@@ -17,4 +17,8 @@ class Cart
   def count_total
     data.values.sum
   end
+
+  def display_items
+      data.map{|k,v| [Item.find(k.to_i),v]}
+  end
 end

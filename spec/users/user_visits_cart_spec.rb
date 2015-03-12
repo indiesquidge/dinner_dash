@@ -10,7 +10,7 @@ RSpec.describe "cart feature", type: :feature do
     create(:item)
     visit "/menu"
     click_link_or_button "Add to Cart"
-    expect(page).to have_content("Item successfully added to cart")
+    expect(page).to have_content("in your cart.")
   end
 
   it "allows users to view their cart" do
@@ -20,12 +20,18 @@ RSpec.describe "cart feature", type: :feature do
     create(:item)
     visit "/menu"
     click_link_or_button "Add to Cart"
+    visit "/cart"
+    expect(page).to have_content("Salted Caramel Peanut Butter Cup")
+  end
+
+  it "tallies the correct number of items" do
+    create(:item)
+    visit "/menu"
     click_link_or_button "Add to Cart"
-
-    expect(page).to have_content("Item successfully added to cart")
-
-
-
+    click_link_or_button "Add to Cart"
+    click_link_or_button "Add to Cart"
+    visit "/cart"
+    expect(page).to have_content("Quantity: 3")
   end
 
   # it "allows users to remove things from their cart" do
