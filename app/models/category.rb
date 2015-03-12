@@ -3,10 +3,14 @@ class Category < ActiveRecord::Base
   has_many :items, through: :item_categories
   validates :name, presence: true, uniqueness: true, length: { maximum: 42 }
 
-  before_save :downcase_name
+  before_validation :parameterize, :downcase_name
 
   def to_param
     "#{name.parameterize}"
+  end
+
+  def parameterize
+    name.to_param
   end
 
   def display_name
@@ -16,6 +20,7 @@ class Category < ActiveRecord::Base
   private
 
   def downcase_name
+    return if name.nil?
     name.downcase!
   end
 end

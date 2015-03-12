@@ -15,6 +15,6 @@ RSpec.describe "user can find things by category", type: :feature do
     create(:item, categories: [category])
 
     visit "/menu/categories/specials"
-    expect(page).to have_content("Salted Caramel Peanut Butter Cup")
+    expect(page).to have_content("salted caramel peanut butter cup")
   end
 end

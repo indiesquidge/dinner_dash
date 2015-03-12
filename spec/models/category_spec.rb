@@ -25,7 +25,7 @@ RSpec.describe Category, type: :model do
     category1 = build(:category)
     category1.save
 
-    expect(category.id).to be_truthy
-    expect(category1.id).to_not be_falsey
+    expect(category).to be_valid
+    expect(category1).to_not be_valid
   end
 end
