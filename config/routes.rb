@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   get "/menu", to: "menu#index"
 
-  namespace :menu do
-    resources :item, as: :item_name
-    resources :category, as: :category_name
+  scope :menu, as: "menu" do
+    resources :items, param: :item_name
+    resources :categories, param: :category_name
   end
 end
