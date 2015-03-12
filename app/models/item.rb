@@ -3,4 +3,8 @@ class Item < ActiveRecord::Base
   has_many :categories, through: :item_categories
   validates :name, presence: true, uniqueness: true
   validates :description, :price, presence: true
+
+  def to_param
+    "#{name.parameterize}"
+  end
 end

@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "user can find things by category", type: :feature do
-  xit "can click on a category tag on the menu page" do
+  it "can click on a category tag on the menu page" do
     item = create(:item)
     category = create(:category)
     item.categories << category
@@ -9,7 +9,8 @@ RSpec.describe "user can find things by category", type: :feature do
 
     visit "/menu"
     click_link_or_button("Specials")
-    assert page.current_path == menu_item_name_path
+    # binding.pry
+    assert page.current_path == "/menu/category/specials"
   end
 
   it "can see different category pages" do
@@ -18,7 +19,7 @@ RSpec.describe "user can find things by category", type: :feature do
     item.categories << category
     item.save!
 
-    visit "/menu/category/Specials"
+    visit "/menu/category/specials"
     expect(page).to have_content("Salted Caramel Peanut Butter Cup")
   end
 end
