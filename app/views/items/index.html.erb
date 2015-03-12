@@ -1,7 +1,11 @@
 <h1>Menu</h1>
+<%= notice %>
 
 <% @items.each do |item| %>
   <div class="col-sm-4">
     <%= item.name %>
+    <%= button_to "Add to Cart", cart_items_path(:item => item) %>
   </div>
 <% end %>
+
+
