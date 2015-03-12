@@ -21,10 +21,11 @@ RSpec.describe Category, type: :model do
   end
 
   it "requires a unique name" do
-    category1 = Category.create(name: "Specials")
-    category2 = Category.create(name: "Specials")
+    category = create(:category)
+    category1 = build(:category)
+    category1.save
 
-    expect(category1).to be_valid
-    expect(category2).to_not be_valid
+    expect(category).to be_valid
+    expect(category1).to_not be_valid
   end
 end

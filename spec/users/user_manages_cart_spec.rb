@@ -21,7 +21,7 @@ RSpec.describe "user managing cart", type: :feature do
     visit "/menu"
     click_link_or_button "Add to Cart" # think about stubbing values in the cart
     visit "/cart"
-    expect(page).to have_content("Salted Caramel Peanut Butter Cup")
+    expect(page).to have_content("salted caramel peanut butter cup")
   end
 
   it "sees the correct number of items" do
