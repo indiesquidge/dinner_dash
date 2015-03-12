@@ -12,7 +12,6 @@ RSpec.describe "user can find things by category", type: :feature do
     assert page.current_path == menu_item_name_path
   end
 
-
   it "can see different category pages" do
     item = create(:item)
     category = create(:category)
