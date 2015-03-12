@@ -22,7 +22,7 @@ RSpec.describe Category, type: :model do
 
   it "requires a unique name" do
     category = create(:category)
-    category1 = category = build(:category)
+    category1 = build(:category)
     category1.save
 
     expect(category.id).to be_truthy
