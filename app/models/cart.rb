@@ -10,7 +10,7 @@ class Cart
     data[item.id.to_s] += 1
   end
 
-  def count_of(item)
+  def item_quantity(item)
     data[item.id.to_s]
   end
 
@@ -19,6 +19,6 @@ class Cart
   end
 
   def display_items
-    data.map{|k,v| [Item.find(k.to_i),v]}
+    data.map{ |k,v| [Item.find(k.to_i), v] }
   end
 end
