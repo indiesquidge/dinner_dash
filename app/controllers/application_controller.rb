@@ -8,6 +8,4 @@ class ApplicationController < ActionController::Base
     @cart = Cart.new(session[:cart])
   end
   before_action :load_cart
-
-
 end

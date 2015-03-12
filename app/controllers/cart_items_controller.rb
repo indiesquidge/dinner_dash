@@ -1,5 +1,4 @@
 class CartItemsController < ApplicationController
-
   def create
     item = Item.find(params[:item])
     @cart.add_item(item)
@@ -11,5 +10,4 @@ class CartItemsController < ApplicationController
   def index
     @cart
   end
-
 end

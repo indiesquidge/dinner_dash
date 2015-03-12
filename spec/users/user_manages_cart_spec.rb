@@ -1,7 +1,7 @@
 require "rails_helper"
 
-RSpec.describe "cart feature", type: :feature do
-  it "allows users to add items to their cart" do
+RSpec.describe "user managing cart", type: :feature do
+  it "adds items to cart" do
   # As an Unauthenticated User
   # When I visit /menu
   # And I click “Add to Cart” on a particular listed item
@@ -13,18 +13,18 @@ RSpec.describe "cart feature", type: :feature do
     expect(page).to have_content("in your cart.")
   end
 
-  it "allows users to view their cart" do
+  it "views their cart" do
   # As an Unauthenticated User
   # When I visit /cart
   # Then I should see all items in my Cart
     create(:item)
     visit "/menu"
-    click_link_or_button "Add to Cart"
+    click_link_or_button "Add to Cart" # think about stubbing values in the cart
     visit "/cart"
     expect(page).to have_content("Salted Caramel Peanut Butter Cup")
   end
 
-  it "tallies the correct number of items" do
+  it "sees the correct number of items" do
     create(:item)
     visit "/menu"
     click_link_or_button "Add to Cart"
@@ -32,6 +32,7 @@ RSpec.describe "cart feature", type: :feature do
     click_link_or_button "Add to Cart"
     visit "/cart"
     expect(page).to have_content("Quantity: 3")
+    # factory girl? stubbing current user? wrap the cart in a method called cart instead of directly accessing the cart and that would allow me to stub the method the same way we stubbed current user before.
   end
 
   # it "allows users to remove things from their cart" do
