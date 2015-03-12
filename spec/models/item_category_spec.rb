@@ -18,7 +18,7 @@ RSpec.describe ItemCategory, type: :model do
     item = create(:item)
     category = create(:category)
     item.categories << category
-    expect(item.categories.first.name).to eq("specials")
+    expect(item.categories.first.name.downcase).to eq("specials")
   end
 
   it "creates the join table correctly" do

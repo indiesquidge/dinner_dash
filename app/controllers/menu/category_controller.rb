@@ -4,7 +4,7 @@ class Menu::CategoryController < ApplicationController
   end
 
   def current_category
-    cat = Category.find_by(name: params[:id])
+    Category.find_by(name: params[:id])
   end
   helper_method :current_category
 end

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '/menu', to: "menu#index"
+  get "/menu", to: "menu#index"
 
   namespace :menu do
     resources :item, as: :item_name
