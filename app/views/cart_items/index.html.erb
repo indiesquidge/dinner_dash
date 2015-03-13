@@ -1,6 +1,11 @@
 <h1>Your Cart</h1>
 
     <% @cart.display_items.each do |item,quantity| %>
-      <%= item.name %>
+      <p><%= item.name %><br>
       Quantity: <%= quantity %><br/>
+      <%= link_to "Remove from Cart", cart_item_path(id: item.id), method: :delete %><br>
+        <%= button_to "Add Another", cart_items_path(item: item) %></br>
+      </p>
     <% end %>
+
+    Total Items: <%= @cart.count_total %>
