@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 gem 'rails', '4.2.0'
 gem 'pg'
@@ -16,16 +16,16 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 gem 'cancancan'
 
-
 group :development, :test do
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
-  gem 'pry'
-  gem 'capybara'
-  gem 'launchy'
-  gem 'rspec-rails'
-  gem 'awesome_print'
+  gem "byebug"
+  gem "web-console", "~> 2.0"
+  gem "spring"
+  gem "pry"
+  gem "capybara"
+  gem "launchy"
+  gem "rspec-rails"
+  gem "awesome_print"
   gem "factory_girl_rails"
-  gem 'database_cleaner'
+  gem "database_cleaner"
+  gem "faker"
 end

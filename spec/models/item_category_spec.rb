@@ -2,14 +2,27 @@ require "rails_helper"
 require "support/factory_girl"
 
 RSpec.describe ItemCategory, type: :model do
+  it "is valid" do
+    item_category = create(:item_category)
+    expect(item_category).to be_valid
+  end
+
+  it "is invalid without an item_id" do
+    item_category = build(:item_category, item_id: nil)
+    expect(item_category).not_to be_valid
+  end
+
+  it "is invalid without a category_id" do
+    item_category = build(:item_category, category_id: nil)
+    expect(item_category).not_to be_valid
+  end
+
   it "associates an item with a category" do
     item = create(:item)
-    category = create(:category)
     expect(item).to respond_to(:categories)
   end
 
   it "associates a category with an item" do
-    item = create(:item)
     category = create(:category)
     expect(category).to respond_to(:items)
   end
