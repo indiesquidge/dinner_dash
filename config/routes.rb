@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :categories, param: :category_name
   end
 
-  resources :cart_items, only: [:create]
+  resources :cart_items, only: [:create, :destroy]
   get "/cart", to: "cart_items#index"
 
   get "/account", to: "users#show"
