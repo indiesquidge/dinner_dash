@@ -36,14 +36,19 @@ RSpec.describe "user managing cart", type: :feature do
     # factory girl? stubbing current user? wrap the cart in a method called cart instead of directly accessing the cart and that would allow me to stub the method the same way we stubbed current user before.
   end
 
-  # it "allows users to remove things from their cart" do
+  it "allows users to remove things from their cart" do
   # As an Unauthenticated User
   # When I visit /cart
   # And I click “Remove from Cart” on an Item
   # And I see a flash alert that “The item has been removed from your cart”
   # And I see the item disappear from my Cart
   # Then I should see the cart size decrease by one item
-  # end
+    visit "/cart"
+    click_link_or_button "Remove from Cart"
+    expect(page).to have_content("The item has been removed from your cart")
+    # expect(page).to_not have_content("salted caramel")
+    #expect(item.count).to eq(3)
+  end
 
   # it "allows users to view their cart" do
   # end

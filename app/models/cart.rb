@@ -19,6 +19,6 @@ class Cart
   end
 
   def display_items
-    data.map{ |k,v| [Item.find(k.to_i), v] }
+    data.map { |k, v| [Item.find(k.to_i), v] }
   end
 end
