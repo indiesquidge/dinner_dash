@@ -31,7 +31,6 @@ RSpec.describe "user managing cart", type: :feature do
     click_link_or_button "Add to Cart"
     click_link_or_button "Add to Cart"
     visit "/cart"
-    save_and_open_page
     expect(page).to have_content("Quantity: 3")
     # factory girl? stubbing current user? wrap the cart in a method called cart instead of directly accessing the cart and that would allow me to stub the method the same way we stubbed current user before.
   end
