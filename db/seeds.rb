@@ -1,30 +1,26 @@
-Item.create_20_items
-Category.create_5_categories
-ItemCategory.create_item_category_associations
-
-Order.create_5_ordered_orders
-Order.create_5_completed_orders
-Order.create_3_orders
-
-User.create_rachel
-User.create_jeff
-User.create_jorge
-User.create_josh
-
-# ======================== Seed Data Generation ========================
-
-class Item
+class SeedItem
   def self.create_15_active_items
-    20.times do
+    15.times do
       Item.create(name: Faker::Commerce.product_name,
                   description: Faker::Hacker.say_something_smart,
                   image: Faker::Avatar.image,
-                  price: Faker::Commerce.price)
+                  price: Faker::Commerce.price,
+                  status: "active")
+    end
+  end
+
+  def self.create_5_retired_items
+    5.times do
+      Item.create(name: Faker::Commerce.product_name,
+                  description: Faker::Hacker.say_something_smart,
+                  image: Faker::Avatar.image,
+                  price: Faker::Commerce.price,
+                  status: "retired")
     end
   end
 end
 
-class Category
+class SeedCategory
   def self.create_5_categories
     5.times do
       Category.create(name: Faker::Commerce.department(1, true))
@@ -32,7 +28,7 @@ class Category
   end
 end
 
-class ItemCategory
+class SeedItemCategory
   def self.create_item_category_associations
     40.times do
       selected_item = Item.all.sample
@@ -43,39 +39,7 @@ class ItemCategory
   end
 end
 
-class Order
-  def self.create_5_ordered_orders
-    3.times do
-      selected_user = User.all.sample
-      Order.create(user_id: selected_user.id,
-                   status: "ordered",
-                   created_at: Faker::Time.between(2.days.ago, Time.now),
-                   updated_at: Faker::Time.between(2.days.ago, Time.now))
-    end
-  end
-
-  def self.create_5_completed_orders
-    3.times do
-      selected_user = User.all.sample
-      Order.create(user_id: selected_user.id,
-                   status: "completed",
-                   created_at: Faker::Time.between(2.days.ago, Time.now),
-                   updated_at: Faker::Time.between(2.days.ago, Time.now))
-    end
-  end
-
-  def self.create_3_cancelled_orders
-    3.times do
-      selected_user = User.all.sample
-      Order.create(user_id: selected_user.id,
-                   status: "cancelled",
-                   created_at: Faker::Time.between(2.days.ago, Time.now),
-                   updated_at: Faker::Time.between(2.days.ago, Time.now))
-    end
-  end
-end
-
-class User
+class SeedUser
   def self.create_rachel
     User.create(first_name: "Rachel",
                 last_name: "Warbelow",
@@ -108,3 +72,51 @@ class User
                 role: "admin")
   end
 end
+
+class SeedOrder
+  def self.create_5_ordered_orders
+    3.times do
+      selected_user = User.all.sample
+      Order.create(user_id: selected_user.id,
+                   status: "ordered",
+                   created_at: Faker::Time.between(2.days.ago, Time.now),
+                   updated_at: Faker::Time.between(2.days.ago, Time.now))
+    end
+  end
+
+  def self.create_5_completed_orders
+    3.times do
+      selected_user = User.all.sample
+      Order.create(user_id: selected_user.id,
+                   status: "completed",
+                   created_at: Faker::Time.between(2.days.ago, Time.now),
+                   updated_at: Faker::Time.between(2.days.ago, Time.now))
+    end
+  end
+
+  def self.create_3_cancelled_orders
+    3.times do
+      selected_user = User.all.sample
+      Order.create(user_id: selected_user.id,
+                   status: "cancelled",
+                   created_at: Faker::Time.between(2.days.ago, Time.now),
+                   updated_at: Faker::Time.between(2.days.ago, Time.now))
+    end
+  end
+end
+
+# =========================== Seed Data ===========================
+
+SeedItem.create_15_active_items
+SeedItem.create_5_retired_items
+SeedCategory.create_5_categories
+SeedItemCategory.create_item_category_associations
+
+SeedUser.create_rachel
+SeedUser.create_jeff
+SeedUser.create_jorge
+SeedUser.create_josh
+
+SeedOrder.create_5_ordered_orders
+SeedOrder.create_5_completed_orders
+SeedOrder.create_3_cancelled_orders
