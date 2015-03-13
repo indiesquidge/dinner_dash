@@ -24,7 +24,7 @@ RSpec.describe "user managing cart", type: :feature do
     expect(page).to have_content("salted caramel peanut butter cup")
   end
 
-  it "sees the correct number of items" do
+  it "sees the correct quantity for a specific item" do
     create(:item)
     visit "/menu"
     click_link_or_button "Add to Cart"
@@ -42,20 +42,31 @@ RSpec.describe "user managing cart", type: :feature do
   # And I see a flash alert that “The item has been removed from your cart”
   # And I see the item disappear from my Cart
   # Then I should see the cart size decrease by one item
+    create(:item)
+    visit "/menu"
+    click_link_or_button "Add to Cart"
     visit "/cart"
     click_link_or_button "Remove from Cart"
     expect(page).to have_content("The item has been removed from your cart")
-    # expect(page).to_not have_content("salted caramel")
-    #expect(item.count).to eq(3)
+    expect(page).to_not have_content("salted caramel")
+    # expect(item.count).to eq(3)
   end
 
   # it "allows users to view their cart" do
   # end
 
-  # it "allows users to increase the quantity of an item in their cart" do
+  it "allows users to increase the quantity of an item in their cart" do
+    create(:item)
+    visit "/menu"
+    click_link_or_button "Add to Cart"
+    visit "/cart"
+    click_link_or_button "Add Another"
+    expect(page).to have_content("Quantity: 2")
+    expect(page).to have_content("Total Items: 2")
+
   # As an Unauthenticated User
   # When I visit /cart
   # And I increase the quantity of an item in my cart
   # Then the size of my cart should increase by one
-  # end
+  end
 end
