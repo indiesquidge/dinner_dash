@@ -22,9 +22,9 @@ RSpec.describe Item, type: :model do
     expect(item).to_not be_valid
   end
 
-  it "is not retired by default" do
+  it "is active by default" do
     item = create(:item)
-    expect(item.retired).to eq(false)
+    expect(item.status).to eq("active")
   end
 
   it "name must be unique" do

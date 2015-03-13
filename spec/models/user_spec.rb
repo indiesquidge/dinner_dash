@@ -17,6 +17,11 @@ RSpec.describe User, type: :model do
     expect(user).not_to be_valid
   end
 
+  it "is valid without a display name" do
+    user = build(:user, display_name: nil)
+    expect(user).to be_valid
+  end
+
   it "is invalid without an email" do
     user = build(:user, email: nil)
     expect(user).not_to be_valid
