@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150313030347) do
+ActiveRecord::Schema.define(version: 20150313043855) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,10 +49,10 @@ ActiveRecord::Schema.define(version: 20150313030347) do
     t.text     "description"
     t.integer  "price"
     t.text     "photo"
-    t.boolean  "retired",            default: false
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.text     "parameterized_name"
+    t.text     "status",             default: "active"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20150313030347) do
     t.integer  "role",            default: 0
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.text     "display_name"
   end
 
   add_foreign_key "item_categories", "categories"
