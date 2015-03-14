@@ -27,6 +27,7 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "database_cleaner"
   gem "faker"
-  gem "simplecov", require: false, group: :test
+  gem "simplecov", require: false
+  gem "codeclimate-test-reporter", require: nil
 end
 
