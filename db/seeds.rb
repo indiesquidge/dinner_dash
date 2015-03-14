@@ -77,30 +77,33 @@ class SeedOrder
   def self.create_5_ordered_orders
     3.times do
       selected_user = User.all.sample
-      Order.create(user_id: selected_user.id,
+      order = Order.create(user_id: selected_user.id,
                    status: "ordered",
                    created_at: Faker::Time.between(2.days.ago, Time.now),
                    updated_at: Faker::Time.between(2.days.ago, Time.now))
+      2.times { order.items << Item.all.sample }
     end
   end
 
   def self.create_5_completed_orders
     3.times do
       selected_user = User.all.sample
-      Order.create(user_id: selected_user.id,
+      order = Order.create(user_id: selected_user.id,
                    status: "completed",
                    created_at: Faker::Time.between(2.days.ago, Time.now),
                    updated_at: Faker::Time.between(2.days.ago, Time.now))
+      2.times { order.items << Item.all.sample }
     end
   end
 
   def self.create_3_cancelled_orders
     3.times do
       selected_user = User.all.sample
-      Order.create(user_id: selected_user.id,
+      order = Order.create(user_id: selected_user.id,
                    status: "cancelled",
                    created_at: Faker::Time.between(2.days.ago, Time.now),
                    updated_at: Faker::Time.between(2.days.ago, Time.now))
+      2.times { order.items << Item.all.sample }
     end
   end
 end
