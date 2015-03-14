@@ -34,4 +34,11 @@ RSpec.describe Item, type: :model do
     expect(item1).to be_valid
     expect(item2).to_not be_valid
   end
+
+  it "is associated with orders" do
+    item = create(:item)
+    order = create(:order)
+    item.orders << order
+    expect(item.orders).to eq([order])
+  end
 end
