@@ -5,48 +5,46 @@ RSpec.feature "Unauthenticated user", type: :feature do
   it "cannot view account page until logged in" do
     visit account_path
     within ("#flash_alert") do
-      expect(page).to have_content("You must log in")
+      expect(page).to have_content("You must sign in")
     end
-    expect(page).to have_content("Sign In")
-    login
+    expect(page).to have_content("Sign in")
+    sign_in
     within ("#flash_notice") do
-      expect(page).to have_content("Login successful")
+      expect(page).to have_content("Sign in successful")
     end
     expect(page).to have_content("Account Settings")
   end
 
-  xit "cannot login with incorrect email or password" do
+  it "cannot sign_in with incorrect email or password" do
     create(:user)
     visit login_path
     fill_in "session[email]", with: "richard@example.com"
     fill_in "session[password]", with: "incorrect"
-    click_link_or_button "Sign In"
-    # even though this works in practice, the test keeps failing and i can't
-    # figure out why - miriam
-    within ("flash") do
-      expect(page).to have_content("Invalid login")
+    within("form") { click_link_or_button "Sign in" }
+    within ("#flash_error") do
+      expect(page).to have_content("Invalid")
     end
-    expect(page).to have_content("Login")
+    expect(page).to have_content("Sign in")
   end
 
   it "can logout if already logged in" do
     visit login_path
-    login
-    click_link_or_button "Sign Out"
+    sign_in
+    click_link_or_button "Sign out"
     within ("#flash_notice") do
-      expect(page).to have_content("Goodbye")
+      expect(page).to have_content("Signed out")
     end
     within (".navbar") do
-      expect(page).to have_content("Sign In")
+      expect(page).to have_content("Sign in")
     end
   end
 
   private
 
-  def login
+  def sign_in
     create(:user)
     fill_in "session[email]", with: "richard@example.com"
     fill_in "session[password]", with: "hello"
-    click_link_or_button "Log In"
+    within("form") { click_link_or_button "Sign in" }
   end
 end

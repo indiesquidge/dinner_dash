@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   def authorize
     if current_user.nil?
-      redirect_to login_path, alert: "You must log in"
+      redirect_to login_path, alert: "You must sign in"
     end
   end
 
