@@ -19,8 +19,20 @@ RSpec.feature "Unauthenticated user", type: :feature do
     expect(page).to have_content("Account Settings")
   end
 
+  it "cannot login with incorrect email or password" do
+    visit login_path
+    create(:user)
+    fill_in "session[email]", with: "richard@example.com"
+    fill_in "session[password]", with: "incorrect"
+    click_link_or_button "Login"
+    within ("#flash_error") do
+      expect(page).to have_content("Invalid login")
+    end
+    expect(page).to have_content("Login")
+  end
+
   it "can logout if already logged in" do
-    visit account_path
+    visit login_path
     login
     click_link_or_button "Log out"
     within ("#flash_notice") do
