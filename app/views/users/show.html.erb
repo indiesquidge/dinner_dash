@@ -3,6 +3,6 @@
 <% @orders.each do |order| %>
   <h4>Order #</h4>
     <% order.items.each do |item| %>
-      <%= item.name %>
+      <%= link_to item.name, menu_item_path(item) %>
     <% end %>
 <% end %>
