@@ -34,11 +34,11 @@ RSpec.feature "Unauthenticated user", type: :feature do
   it "can logout if already logged in" do
     visit login_path
     login
-    click_link_or_button "Log out"
+    click_link_or_button "Sign Out"
     within ("#flash_notice") do
       expect(page).to have_content("Goodbye")
     end
-    expect(page).to have_content("Log in")
+    expect(page).to have_content("Sign In")
   end
 
   private
