@@ -5,11 +5,6 @@ class UsersController < ApplicationController
     @orders = Order.where(user_id: current_user.id)
   end
 
-  def total_price(order)
-    order.items.inject(0) { |sum, item| sum + item.price }
-  end
-  helper_method :total_price
-
   private
 
   def authorize

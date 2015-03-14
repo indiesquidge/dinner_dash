@@ -2,7 +2,7 @@
 
 <% @orders.each do |order| %>
   <h4>Order #<%= order.id %></h4>
-  <p>Total: $<%= total_price(order) %></p>
+  <p>Total: $<%= order.total_price %></p>
   <% order.items.each do |item| %>
     <!-- Need to change this to link to the individual item eventually -->
     <p><%= link_to item.name, menu_item_path(item) %></p>
