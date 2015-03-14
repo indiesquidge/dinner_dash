@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_filter :authorize
 
+  def show
+    @orders = Order.where(user_id: current_user.id)
+  end
+
   private
 
   def authorize

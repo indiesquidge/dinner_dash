@@ -22,7 +22,6 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-
             <li><%= link_to "Menu", menu_path %><span class="sr-only"></span></li>
             <li><%= link_to "Account", account_path %><span class="sr-only"></span></li>
             <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'>".html_safe, cart_path %></li>
@@ -31,14 +30,13 @@
             <% else %>
               <li><%= link_to "Sign In", login_path %></li>
             <% end %>
-
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
 
     <div class="container">
-      <div class="row">
+      <div class="row flash">
         <% flash.each do |name, msg| %>
           <%= content_tag :div, msg, :id => "flash_#{name}" %>
         <% end %>

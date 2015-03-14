@@ -1,7 +1,3 @@
-# Need to find a good way to stub the current_user so that we can make this file
-# structured in a proper way. As it stands, moving the duplicate code out to a
-# ruby method is hardly making this any better.
-
 require "rails_helper"
 require "support/factory_girl"
 
@@ -11,7 +7,7 @@ RSpec.feature "Unauthenticated user", type: :feature do
     within ("#flash_alert") do
       expect(page).to have_content("You must log in")
     end
-    expect(page).to have_content("Login")
+    expect(page).to have_content("Sign In")
     login
     within ("#flash_notice") do
       expect(page).to have_content("Login successful")
@@ -20,11 +16,11 @@ RSpec.feature "Unauthenticated user", type: :feature do
   end
 
   it "cannot login with incorrect email or password" do
-    visit login_path
     create(:user)
+    visit login_path
     fill_in "session[email]", with: "richard@example.com"
     fill_in "session[password]", with: "incorrect"
-    click_link_or_button "Login"
+    click_link_or_button "Log In"
     within ("#flash_error") do
       expect(page).to have_content("Invalid login")
     end
@@ -38,7 +34,9 @@ RSpec.feature "Unauthenticated user", type: :feature do
     within ("#flash_notice") do
       expect(page).to have_content("Goodbye")
     end
-    expect(page).to have_content("Sign In")
+    within (".navbar") do
+      expect(page).to have_content("Sign In")
+    end
   end
 
   private
@@ -47,6 +45,6 @@ RSpec.feature "Unauthenticated user", type: :feature do
     create(:user)
     fill_in "session[email]", with: "richard@example.com"
     fill_in "session[password]", with: "hello"
-    click_link_or_button "Login"
+    click_link_or_button "Log In"
   end
 end
