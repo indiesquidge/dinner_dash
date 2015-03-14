@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def total_price(order)
-    order.items.reduce(0) {|sum, item| sum + item.price}
+    order.items.inject(0) { |sum, item| sum + item.price }
   end
   helper_method :total_price
 
@@ -17,5 +17,4 @@ class UsersController < ApplicationController
       redirect_to login_path, alert: "You must sign in"
     end
   end
-
 end
