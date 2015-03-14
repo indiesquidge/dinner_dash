@@ -16,4 +16,11 @@ RSpec.describe Order, type: :model do
     order = create(:order)
     expect(order).to respond_to(:user)
   end
+
+  it "is associated with items" do
+    order = create(:order)
+    item = create(:item)
+    order.items << item
+    expect(order.items).to eq([item])
+  end
 end
