@@ -13,6 +13,10 @@ class SessionsController < ApplicationController
     end
   end
 
+  def destroy
+    log_out
+  end
+
   private
 
   def log_in
@@ -22,5 +26,10 @@ class SessionsController < ApplicationController
 
   def user_found_and_authenticated
     @user && @user.authenticate(params[:session][:password])
+  end
+
+  def log_out
+    session[:user_id] = nil
+    redirect_to root_path, notice: "Goodbye"
   end
 end
