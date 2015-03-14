@@ -2,7 +2,9 @@
 
 <% @orders.each do |order| %>
   <h4>Order #</h4>
+  <p>Status of Order: <%= order.status %></p>
     <% order.items.each do |item| %>
-      <%= link_to item.name, menu_item_path(item) %>
+      <p><%= link_to item.name, menu_item_path(item) %></p>
     <% end %>
+  <p>Order Total: $<%= total_price(order) %></p>
 <% end %>
