@@ -5,12 +5,4 @@ FactoryGirl.define do
     email "richard@example.com"
     password "hello"
   end
-
-  factory :admin do
-    first_name "Phil"
-    last_name "Cat"
-    email "cat@example.com"
-    password "hello"
-    role "admin"
-  end
 end
