@@ -34,12 +34,12 @@ RSpec.describe "user managing cart", type: :feature do
     expect(page).to have_content("Quantity: 2")
   end
 
-  it "can login and the cart should not change" do
+  it "can sign in and the cart should not change" do
     create_item_and_add_to_cart
     visit cart_path
     expect(page).to have_content("Quantity: 1")
     visit account_path
-    user_log_in
+    user_sign_in
     visit cart_path
     expect(page).to have_content("Quantity: 1")
   end
@@ -52,9 +52,9 @@ RSpec.describe "user managing cart", type: :feature do
     click_link_or_button "Add to Cart"
   end
 
-  def user_log_in
+  def user_sign_in
     fill_in "session[email]", with: "richard@example.com"
     fill_in "session[password]", with: "password"
-    click_link_or_button "Sign In"
+    within("form") { click_link_or_button "Sign in" }
   end
 end
