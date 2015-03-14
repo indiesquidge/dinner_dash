@@ -1,5 +1,8 @@
 <h1>Account Settings</h1>
 
 <% @orders.each do |order| %>
-  <%= order.items %>
+  <h4>Order #</h4>
+    <% order.items.each do |item| %>
+      <%= item.name %>
+    <% end %>
 <% end %>
