@@ -1,4 +1,4 @@
-<h2>Login</h2>
+<h2>Sign in</h2>
 <%= form_for(:session, url: login_path) do |f| %>
   <p>
     <%= f.label :email %><br />
@@ -8,5 +8,5 @@
     <%= f.label :password %><br />
     <%= f.password_field :password %>
   </p>
-  <%= f.submit "Log In", class: 'btn btn-default'%>
+  <%= f.submit "Sign in", class: 'btn btn-default'%>
 <% end %>
