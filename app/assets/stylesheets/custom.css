@@ -1,3 +1,11 @@
 h1 {
   text-align: center;
 }
+
+.items {
+  background-color: #d3d3d3;
+  padding: 10px;
+  margin: 20px;
+  border-radius: 25px;
+  text-align: center;
+}
