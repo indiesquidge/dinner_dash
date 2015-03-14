@@ -1,1 +1,9 @@
 <h1>Account Settings</h1>
+
+<% @orders.each do |order| %>
+  <h4>Order # <%= order.id %></h4>
+    <% order.items.each do |item| %>
+      <%= item.name %>
+    <% end %>
+    <% order.status %>
+<% end %>
