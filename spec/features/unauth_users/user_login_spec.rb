@@ -15,15 +15,13 @@ RSpec.feature "Unauthenticated user", type: :feature do
     expect(page).to have_content("Account Settings")
   end
 
-  xit "cannot login with incorrect email or password" do
+  it "cannot login with incorrect email or password" do
     create(:user)
     visit login_path
     fill_in "session[email]", with: "richard@example.com"
     fill_in "session[password]", with: "incorrect"
-    click_link_or_button "Sign In"
-    # even though this works in practice, the test keeps failing and i can't
-    # figure out why - miriam
-    within ("flash") do
+    click_link_or_button "Log In"
+    within ("#flash_error") do
       expect(page).to have_content("Invalid login")
     end
     expect(page).to have_content("Login")
