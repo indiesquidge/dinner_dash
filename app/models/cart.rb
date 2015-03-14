@@ -28,5 +28,4 @@ class Cart
       data.delete(item.id.to_s)
     end
   end
-
 end
