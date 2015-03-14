@@ -7,7 +7,6 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -26,7 +25,11 @@
             <li><a href="<%= menu_path %>">Menu<span class="sr-only">(current)</span></a></li>
             <li><a href="<%= account_path %>">Your Account<span class="sr-only">(current)</span></a></li>
             <li><a href="<%= cart_path %>"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
-            <li><%= link_to "Sign Out", logout_path, method: :delete %></li>
+              <% if current_user %>
+              <li> <%= link_to "Sign Out", logout_path, method: :delete %></li>
+              <% else %>
+              <li><%= link_to "Sign In", login_path %></li>
+              <% end %>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->

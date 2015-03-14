@@ -3,9 +3,11 @@
   <% @items.each do |item| %>
     <div class="col-sm-4 items">
       <%= item.name %>
-      <%= button_to "Add to Cart", cart_items_path(item: item) %>
+      <%= button_to "Add to Cart", cart_items_path(item: item), class: "btn btn-default" %>
       <% item.categories.each do |item_category| %>
-      <p><%= link_to item_category.display_name, menu_category_path(item_category) %></p>
+      <div class="btn-group btn-group-xs" role="group">
+        <%= link_to item_category.display_name, menu_category_path(item_category), class: "btn btn-default" %></p>
+      </div>
       <% end  %>
     </div>
   <% end %>
