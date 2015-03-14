@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if user_found_and_authenticated
       log_in
     else
-      flash[:errors] = "Invalid login"
+      flash[:error] = "Invalid login"
       render :new
     end
   end
