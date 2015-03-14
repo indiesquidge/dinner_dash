@@ -55,6 +55,6 @@ RSpec.describe "user managing cart", type: :feature do
   def user_log_in
     fill_in "session[email]", with: "richard@example.com"
     fill_in "session[password]", with: "password"
-    click_link_or_button "Login"
+    click_link_or_button "Sign In"
   end
 end

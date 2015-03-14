@@ -28,7 +28,5 @@ class Cart
       data.delete(item.id.to_s)
     end
   end
-  # def remove_all_items(item)
-  #   data.delete(item.id.to_s)
-  # end
+
 end
