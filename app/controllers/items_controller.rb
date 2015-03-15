@@ -10,10 +10,10 @@ class ItemsController < ApplicationController
   def create
     @item = Item.create(item_params)
     if @item.save
-      flash[:notice] = "New item has been created!"
+      flash[:success] = "New item has been created!"
       redirect_to menu_item_path(@item)
     else
-      flash[:notice] = "Attributes missing"
+      flash[:error] = "Attributes missing"
       redirect_to new_menu_item_path
     end
   end
@@ -25,10 +25,10 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find_by(parameterized_name: params[:item_name])
     if @item.update_attributes(item_params)
-      flash[:notice] = "Item has been successfully updated!"
+      flash[:success] = "Item has been successfully updated!"
       redirect_to menu_item_path(@item)
     else
-      flash[:notice] = "Attributes missing."
+      flash[:error] = "Attributes missing."
       redirect_to :back
     end
   end
