@@ -5,7 +5,7 @@
       <%= item.name %>
       <%= button_to "Add to Cart", cart_items_path(item: item), class: "btn btn-default" %>
       <div class="btn-group btn-group-xs" role="group">
-      <% item.categories.uniq.each do |item_category| %>
+      <% item.categories.each do |item_category| %>
         <%= link_to item_category.display_name, menu_category_path(item_category), class: "btn btn-default" %>
       <% end  %>
       </div>
