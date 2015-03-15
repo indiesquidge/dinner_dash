@@ -24,9 +24,13 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find_by(parameterized_name: params[:item_name])
-    @item.update_attributes(item_params)
-    flash[:notice] = "Item has been successfully updated!"
-    redirect_to menu_item_path(@item)
+    if @item.update_attributes(item_params)
+      flash[:notice] = "Item has been successfully updated!"
+      redirect_to menu_item_path(@item)
+    else
+      flash[:notice] = "Attributes missing."
+      redirect_to :back
+    end
   end
 
   private
