@@ -42,7 +42,4 @@ RSpec.describe "admin managing items", type: :feature do
     click_link_or_button "Submit"
     expect(page).to have_content("Attributes missing.")
   end
-
-
-
 end
