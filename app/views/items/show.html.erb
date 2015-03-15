@@ -1,3 +1,5 @@
-<h1><%= @item.name %></h1>
+<h1><%= @item.display_name %></h1>
 <p>Description: <%= @item.description %></p>
 <p>Price: <%= @item.price %></p>
+<p><%= button_to "Add to Cart", cart_items_path(item: @item), class: "btn btn-default" %></p>
+<p><%= link_to "Edit Item", edit_menu_item_path(@item), class: "btn btn-success" %></p>

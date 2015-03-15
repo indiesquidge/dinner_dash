@@ -22,6 +22,11 @@ RSpec.describe Item, type: :model do
     expect(item).to_not be_valid
   end
 
+  it "is invalid with price set to zero" do
+    item = build(:item, price: 0)
+    expect(item).to_not be_valid
+  end
+
   it "is active by default" do
     item = create(:item)
     expect(item.status).to eq("active")

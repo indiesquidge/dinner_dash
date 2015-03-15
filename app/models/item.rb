@@ -6,6 +6,7 @@ class Item < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
   validates :description, :price, presence: true
+  validates :price, numericality: { greater_than: 0 }
 
   before_validation :parameterize, :downcase_name
 
@@ -16,6 +17,10 @@ class Item < ActiveRecord::Base
   def parameterize
     return if name.nil?
     self.parameterized_name = name.parameterize
+  end
+
+  def display_name
+    name.titleize
   end
 
   private
