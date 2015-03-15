@@ -7,7 +7,7 @@ RSpec.describe "admin managing items", type: :feature do
     fill_in "item[name]", with: "fudge"
     fill_in "item[description]", with: "double chocolate"
     fill_in "item[price]", with: "600"
-    click_link_or_button "Create"
+    click_link_or_button "Submit"
     assert page.current_path == "/menu/items/fudge"
     expect(page).to have_content("New item has been created!")
   end
@@ -16,7 +16,7 @@ RSpec.describe "admin managing items", type: :feature do
     visit new_menu_item_path
     fill_in "item[description]", with: "double chocolate"
     fill_in "item[price]", with: "600"
-    click_link_or_button "Create"
+    click_link_or_button "Submit"
     assert page.current_path == "/menu/items/new"
     expect(page).to have_content("Attributes missing")
   end
