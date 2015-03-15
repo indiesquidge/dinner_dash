@@ -18,6 +18,10 @@ class Item < ActiveRecord::Base
     self.parameterized_name = name.parameterize
   end
 
+  def display_name
+    name.titleize
+  end
+
   private
 
   def downcase_name
