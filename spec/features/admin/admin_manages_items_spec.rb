@@ -11,4 +11,13 @@ RSpec.describe "admin managing items", type: :feature do
     assert page.current_path == "/menu/items/fudge"
     expect(page).to have_content("New item has been created!")
   end
+
+  it "cannot create item without valid name" do
+    visit new_menu_item_path
+    fill_in "item[description]", with: "double chocolate"
+    fill_in "item[price]", with: "600"
+    click_link_or_button "Create"
+    assert page.current_path == "/menu/items/new"
+    expect(page).to have_content("Attributes missing")
+  end
 end
