@@ -2,7 +2,7 @@
 
 <% @cart.display_items.each do |item,quantity| %>
   <p>
-    <%= item.name %><br>
+    <%= link_to item.name, menu_item_path(item) %><br>
     <%= item.price %><br>
     Quantity: <%= quantity %><br/>
     <%= link_to "Remove from Cart", cart_item_path(id: item.id), method: :delete %><br>
