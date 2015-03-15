@@ -1,0 +1,18 @@
+<h1>New Item Page</h1>
+
+<h2>Please enter your new item:</h2>
+<%= form_for [:menu, @item] do |f| %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </p>
+  <%= f.submit "Create", class: 'btn btn-default'%>
+<% end %>
