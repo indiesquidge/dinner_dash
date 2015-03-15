@@ -18,6 +18,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def edit
+    @item = Item.find_by(parameterized_name: params[:item_name])
+  end
+
   private
 
   def item_params
