@@ -41,4 +41,20 @@ RSpec.describe Item, type: :model do
     item.orders << order
     expect(item.orders).to eq([order])
   end
+
+  it "can have categories attached to it" do
+    item = create(:item)
+    category = create(:category)
+    item.categories << category
+    expect(item.categories).to eq([category])
+  end
+
+  it "cannot be tagged with the same category multiple times" do
+    item = create(:item)
+    category = create(:category)
+    item.categories << category
+    item.categories << category
+    expect(item.categories).to eq([category])
+    expect(item.categories.count).to eq(1)
+  end
 end

@@ -3,4 +3,8 @@ class Order < ActiveRecord::Base
   has_many :item_orders
   has_many :items, through: :item_orders
   belongs_to :user
+
+  def total_price
+    items.inject(0) { |sum, item| sum + item.price }
+  end
 end
