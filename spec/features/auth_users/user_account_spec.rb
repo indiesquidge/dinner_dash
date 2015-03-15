@@ -13,6 +13,7 @@ RSpec.feature "user visits account", type: :feature do
     expect(page).to have_content("salted caramel peanut butter cup")
     expect(page).to have_content("$600")
     expect(page).to have_content("ordered")
+    expect(page).to have_content("March 14, 2015, 3:08 PM")
     click_link_or_button("salted caramel peanut butter cup")
     expect(page).to have_content("Salted caramel ice cream with chopped peanut butter cups")
   end

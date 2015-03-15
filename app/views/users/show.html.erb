@@ -8,4 +8,6 @@
     <p><%= link_to item.name, menu_item_path(item) %></p>
   <% end %>
   <p>Status: <%= order.status %></p>
+  <p>Time of Order: <%= format_time(order.created_at) %></p>
+
 <% end %>
