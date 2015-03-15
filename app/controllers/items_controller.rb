@@ -9,8 +9,13 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.create(item_params)
+    if @item.save
       flash[:notice] = "New item has been created!"
       redirect_to menu_item_path(@item)
+    else
+      flash[:notice] = "Attributes missing"
+      redirect_to new_menu_item_path
+    end
   end
 
   private
