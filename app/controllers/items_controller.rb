@@ -22,6 +22,13 @@ class ItemsController < ApplicationController
     @item = Item.find_by(parameterized_name: params[:item_name])
   end
 
+  def update
+    @item = Item.find_by(parameterized_name: params[:item_name])
+    @item.update_attributes(item_params)
+    flash[:notice] = "Item has been successfully updated!"
+    redirect_to menu_item_path(@item)
+  end
+
   private
 
   def item_params
