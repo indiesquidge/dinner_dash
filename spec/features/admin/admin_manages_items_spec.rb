@@ -32,4 +32,17 @@ RSpec.describe "admin managing items", type: :feature do
     assert page.current_path == "/menu/items/fudge"
     expect(page).to have_content("Item has been successfully updated!")
   end
+
+  it "cannot modify item if attribute is missing" do
+    item = create(:item)
+    visit edit_menu_item_path(item)
+    fill_in "item[name]", with: "fudge"
+    fill_in "item[description]", with: ""
+    fill_in "item[price]", with: "600"
+    click_link_or_button "Submit"
+    expect(page).to have_content("Attributes missing.")
+  end
+
+
+
 end
