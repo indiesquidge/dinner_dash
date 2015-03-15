@@ -1,6 +1,6 @@
 class SeedItem
-  def self.create_15_active_items
-    15.times do
+  def self.create_20_active_items
+    20.times do
       Item.create(name: Faker::Commerce.product_name,
                   description: Faker::Hacker.say_something_smart,
                   image: Faker::Avatar.image,
@@ -9,13 +9,10 @@ class SeedItem
     end
   end
 
-  def self.create_5_retired_items
+  def self.retire_5_items
     5.times do
-      Item.create(name: Faker::Commerce.product_name,
-                  description: Faker::Hacker.say_something_smart,
-                  image: Faker::Avatar.image,
-                  price: Faker::Commerce.price,
-                  status: "retired")
+      item = Item.all.uniq.sample
+      item.status = "retired"
     end
   end
 end
@@ -74,44 +71,36 @@ class SeedUser
 end
 
 class SeedOrder
-  def self.create_5_ordered_orders
-    3.times do
+  def self.create_10_orders
+    10.times do
       selected_user = User.all.sample
       order = Order.create(user_id: selected_user.id,
-                   status: "ordered",
-                   created_at: Faker::Time.between(2.days.ago, Time.now),
-                   updated_at: Faker::Time.between(2.days.ago, Time.now))
+                           status: "ordered",
+                           created_at: Faker::Time.between(2.days.ago, Time.now),
+                           updated_at: Faker::Time.between(2.days.ago, Time.now))
       2.times { order.items << Item.all.sample }
     end
   end
 
-  def self.create_5_completed_orders
+  def self.three_completed_orders
     3.times do
-      selected_user = User.all.sample
-      order = Order.create(user_id: selected_user.id,
-                   status: "completed",
-                   created_at: Faker::Time.between(2.days.ago, Time.now),
-                   updated_at: Faker::Time.between(2.days.ago, Time.now))
-      2.times { order.items << Item.all.sample }
+      order = Order.all.uniq.sample
+      order.status = "completed"
     end
   end
 
-  def self.create_3_cancelled_orders
-    3.times do
-      selected_user = User.all.sample
-      order = Order.create(user_id: selected_user.id,
-                   status: "cancelled",
-                   created_at: Faker::Time.between(2.days.ago, Time.now),
-                   updated_at: Faker::Time.between(2.days.ago, Time.now))
-      2.times { order.items << Item.all.sample }
+  def self.two_cancelled_orders
+    2.times do
+      order = Order.all.uniq.sample
+      order.status = "cancelled"
     end
   end
 end
 
 # =========================== Seed Data ===========================
 
-SeedItem.create_15_active_items
-SeedItem.create_5_retired_items
+SeedItem.create_20_active_items
+SeedItem.retire_5_items
 SeedCategory.create_5_categories
 SeedItemCategory.create_item_category_associations
 
@@ -120,6 +109,6 @@ SeedUser.create_jeff
 SeedUser.create_jorge
 SeedUser.create_josh
 
-SeedOrder.create_5_ordered_orders
-SeedOrder.create_5_completed_orders
-SeedOrder.create_3_cancelled_orders
+SeedOrder.create_10_orders
+SeedOrder.three_completed_orders
+SeedOrder.two_cancelled_orders
