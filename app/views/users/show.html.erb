@@ -9,5 +9,7 @@
   <% end %>
   <p>Status: <%= order.status %></p>
   <p>Time of Order: <%= format_time(order.created_at) %></p>
-
+  <% if order.status == "cancelled" || order.status == "completed" %>
+    <p><%= "Your order was " + order.status + " at " + format_time(order.updated_at) %></p>
+    <% end %>
 <% end %>
