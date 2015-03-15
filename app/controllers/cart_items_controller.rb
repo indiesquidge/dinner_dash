@@ -1,9 +1,9 @@
 class CartItemsController < ApplicationController
   def create
     item = Item.find_by(parameterized_name: params[:item])
-    @cart.add_item(item)
 
     session[:cart] = @cart.data
+    @cart.add_item(item)
     flash[:notice] =
     "You have #{pluralize(@cart.item_quantity(item), item.name)} in your cart."
     redirect_to :back
