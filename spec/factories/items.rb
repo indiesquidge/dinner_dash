@@ -2,6 +2,6 @@ FactoryGirl.define do
   factory :item do
     name "Salted Caramel Peanut Butter Cup"
     description "Salted caramel ice cream with chopped peanut butter cups"
-    price 600
+    price 6.00
   end
 end
