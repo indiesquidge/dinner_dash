@@ -25,7 +25,6 @@ RSpec.describe "admin managing items", type: :feature do
     create(:item)
     visit "/menu/items/salted-caramel-peanut-butter-cup"
     click_link_or_button "Edit Item"
-    visit edit_menu_item
     fill_in "item[name]", with: "fudge"
     fill_in "item[description]", with: "double chocolate"
     fill_in "item[price]", with: "600"
