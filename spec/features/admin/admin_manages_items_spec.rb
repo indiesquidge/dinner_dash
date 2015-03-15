@@ -20,4 +20,17 @@ RSpec.describe "admin managing items", type: :feature do
     assert page.current_path == "/menu/items/new"
     expect(page).to have_content("Attributes missing")
   end
+
+  it "can modify item listings from individual item page" do
+    create(:item)
+    visit "/menu/items/salted-caramel-peanut-butter-cup"
+    click_link_or_button "Edit Item"
+    visit edit_menu_item
+    fill_in "item[name]", with: "fudge"
+    fill_in "item[description]", with: "double chocolate"
+    fill_in "item[price]", with: "600"
+    click_link_or_button "Submit"
+    assert page.current_path == "/menu/items/fudge"
+    expect(page).to have_content("Item has been successfully updated!")
+  end
 end
