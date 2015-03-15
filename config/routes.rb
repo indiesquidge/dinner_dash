@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :categories, param: :category_name
   end
 
-  scope :admin, as: "admin"do
+  scope :admin, as: "admin" do
     get "/dashboard", to: "admin#show"
   end
 
