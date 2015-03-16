@@ -13,7 +13,10 @@
   </p>
   <p>
     <%= f.label "Category:" %>
-    <%= f.collection_select :category_ids, Category.all, :id, :name, {}, { multiple: true } %>
+    <% Category.all.each do |category| %>
+      <%= check_box_tag 'category_ids[]', category.id, @item.categories.include?(category)%>
+      <%= category.name %>
+    <% end %>
   </p>
   <p>
     <%= f.label :select_image %><br />

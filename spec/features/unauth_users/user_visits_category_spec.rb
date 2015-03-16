@@ -19,4 +19,10 @@ RSpec.describe "user can find things by category", type: :feature do
     visit "/menu/categories/specials"
     expect(page).to have_content("salted caramel peanut butter cup")
   end
+
+  it "user cannot access create categories page" do
+    create(:user)
+    visit new_menu_category_path
+    expect(page).to have_content("You are not authorized to access this page")
+  end
 end

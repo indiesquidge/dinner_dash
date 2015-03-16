@@ -23,11 +23,6 @@ class CategoriesController < ApplicationController
   def index
   end
 
-  def current_category
-    Category.find_by(name: params[:category_name])
-  end
-  helper_method :current_category
-
   private
 
   def category_params

@@ -36,7 +36,8 @@ RSpec.describe "admin managing items", type: :feature do
 
   it "can access edit item from individual item page" do
     create_admin_user
-    create(:item)
+    item = create(:item)
+    item.categories << create(:category)
     visit "/menu/items/salted-caramel-peanut-butter-cup"
     click_link_or_button "Edit Item"
     fill_in "item[name]", with: "fudge"
@@ -56,6 +57,19 @@ RSpec.describe "admin managing items", type: :feature do
     fill_in "item[price]", with: "600"
     click_link_or_button "Submit"
     expect(page).to have_content("Attributes missing.")
+  end
+
+  it "cannot create item if no category is selected" do
+    create_admin_user
+    create(:item)
+    visit new_menu_item_path
+    fill_in "item[name]", with: "fudge"
+    fill_in "item[description]", with: ""
+    fill_in "item[price]", with: "600"
+    click_link_or_button "Submit"
+    within("div.alert-danger") do
+      expect(page).to have_content("Attributes missing")
+    end
   end
 
   xit "can upload photo when creating new item" do
