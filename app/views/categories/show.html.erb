@@ -1,5 +1,10 @@
 <h1><%= current_category.name.capitalize %></h1>
 
-<% @items.each do |item| %>
-  <%= item.name %>
-<% end %>
+<div class="row">
+  <% @items.each do |item| %>
+    <div class="col-sm-3 items">
+      <%= item.name %>
+      <%= button_to "Add to Cart", cart_items_path(item: item), class: "btn btn-default" %>
+    </div>
+  <% end %>
+</div>
