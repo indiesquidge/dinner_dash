@@ -12,6 +12,11 @@
     <%= f.text_field :price %>
   </p>
   <p>
+    <%= f.label "Category:" %>
+    <%= f.collection_select :category_ids, Category.all, :id, :name, {}, { multiple: true } %>
+  </p>
+  <p>
+    <%= f.label :select_image %><br />
     <%= f.file_field :image %>
   </p>
   <%= f.submit "Submit", class: 'btn btn-default'%>
