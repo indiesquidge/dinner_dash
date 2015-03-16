@@ -59,7 +59,6 @@ RSpec.describe "admin managing items", type: :feature do
     expect(page).to have_content("Attributes missing.")
   end
 
-<<<<<<< HEAD
   it "cannot create item if no category is selected" do
     create_admin_user
     create(:item)
