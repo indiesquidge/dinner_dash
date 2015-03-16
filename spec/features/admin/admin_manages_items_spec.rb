@@ -58,7 +58,7 @@ RSpec.describe "admin managing items", type: :feature do
     expect(page).to have_content("Attributes missing.")
   end
 
-  xit "can upload photo when creating new item" do
+  it "can upload photo when creating new item" do
     create_admin_user
     visit new_menu_item_path
     fill_in "item[name]", with: "fudge"
@@ -66,7 +66,7 @@ RSpec.describe "admin managing items", type: :feature do
     fill_in "item[price]", with: "600"
     attach_file "item[image]", "app/assets/images/cookie-monster.jpg"
     click_link_or_button "Submit"
-    expect(page).to have_text("cookie-monster.jpg")
+    expect(page).to have_css("img[alt='Cookie monster']")
   end
 
   private
