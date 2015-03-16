@@ -21,6 +21,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find_by(parameterized_name: params[:item_name])
+    authorize! :edit, @item
   end
 
   def update
