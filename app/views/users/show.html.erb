@@ -1,11 +1,16 @@
 <h1>Account Settings</h1>
 
 <% @orders.each do |order| %>
-  <h4>Order #<%= order.id %></h4>
-  <p>Total: $<%= order.total_price %></p>
+  <h4>Your Order on <%= format_time(order.created_at) %></h4>
   <% order.items.each do |item| %>
     <!-- Need to change this to link to the individual item eventually -->
-    <p><%= link_to item.name, menu_item_path(item) %></p>
+    <p><%= quantity_of_item(item, order) %>
+    <%= link_to item.name, menu_item_path(item) %>:
+    <%= number_to_currency(line_item_price(item, order)) %></p>
   <% end %>
+  <p>Total: <%= number_to_currency(order.total_price) %></p>
   <p>Status: <%= order.status %></p>
+  <% if order.status == "cancelled" || order.status == "completed" %>
+    <p><%= "Your order was " + order.status + " at " + format_time(order.updated_at) %></p>
+    <% end %>
 <% end %>
