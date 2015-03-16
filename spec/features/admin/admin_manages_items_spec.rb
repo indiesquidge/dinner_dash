@@ -59,6 +59,7 @@ RSpec.describe "admin managing items", type: :feature do
     expect(page).to have_content("Attributes missing.")
   end
 
+<<<<<<< HEAD
   it "cannot create item if no category is selected" do
     create_admin_user
     create(:item)
@@ -80,7 +81,7 @@ RSpec.describe "admin managing items", type: :feature do
     fill_in "item[price]", with: "600"
     attach_file "item[image]", "app/assets/images/cookie-monster.jpg"
     click_link_or_button "Submit"
-    expect(page).to have_text("cookie-monster.jpg")
+    expect(page).to have_css("img[alt='Cookie monster']")
   end
 
   private
