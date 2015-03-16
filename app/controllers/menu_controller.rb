@@ -1,5 +1,5 @@
 class MenuController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.all.reverse
   end
 end

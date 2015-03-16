@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    authorize! :new, @item
   end
 
   def create
@@ -20,6 +21,7 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find_by(parameterized_name: params[:item_name])
+    authorize! :edit, @item
   end
 
   def update
@@ -36,6 +38,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :description, :price)
+    params.require(:item).permit(:name, :description, :price, :image, category_ids: [])
   end
 end

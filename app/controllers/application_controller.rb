@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   include ActionView::Helpers::TextHelper
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :notice => exception.message
+  end
+
   def load_cart
     @cart = Cart.new(session[:cart])
   end
