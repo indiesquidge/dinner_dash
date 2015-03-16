@@ -1,5 +1,5 @@
 <h1><%= @item.display_name %></h1>
-<p><%= image_tag @item.image.url(:medium) %></p>
+<p><%= image_tag @item.image.url(:large) %></p>
 <p>Description: <%= @item.description %></p>
 <p>Price: <%= @item.price %></p>
 <p><%= button_to "Add to Cart", cart_items_path(item: @item), class: "btn btn-default" %></p>
