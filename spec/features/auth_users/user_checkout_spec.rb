@@ -8,7 +8,6 @@ RSpec.feature "user tries to checkout cart", type: :feature do
     visit cart_path
     click_link_or_button("Checkout")
     expect(page).to have_content("paid")
-    save_and_open_page
     expect(page).to have_content("salted caramel peanut butter cup")
   end
 
