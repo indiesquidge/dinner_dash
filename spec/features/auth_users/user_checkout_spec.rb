@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.feature "user tries to checkout cart", type: :feature do
   it "will create a new order when they checkout" do
@@ -16,5 +16,4 @@ RSpec.feature "user tries to checkout cart", type: :feature do
     visit menu_path
     click_link_or_button "Add to Cart"
   end
-
 end

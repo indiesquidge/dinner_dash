@@ -8,7 +8,7 @@ RSpec.describe "user managing cart", type: :feature do
 
   it "views their cart" do
     create_item_and_add_to_cart
-    visit cart_path    
+    visit cart_path
     expect(page).to have_content("salted caramel peanut butter cup")
   end
 
