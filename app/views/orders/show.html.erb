@@ -9,6 +9,6 @@
 <% end %>
 <p>Total: <%= number_to_currency(@order.total_price) %></p>
 <p>Status: <%= @order.status %></p>
-<% if @order.status == "cancelled" || @order.status == "completed" %>
+<% if order_completed_or_cancelled?(@order) %>
 <p><%= "Order was " + @order.status + " at " + format_time(@order.updated_at) %></p>
 <% end %>
