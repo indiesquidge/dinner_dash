@@ -3,6 +3,10 @@ class ApplicationController < ActionController::Base
 
   include ActionView::Helpers::TextHelper
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :notice => exception.message
+  end
+
   def load_cart
     @cart = Cart.new(session[:cart])
   end
@@ -17,4 +21,9 @@ class ApplicationController < ActionController::Base
     time.strftime("%B %d, %Y, %l:%M %p")
   end
   helper_method :format_time
+
+  def current_category
+    Category.find_by(name: params[:category_name])
+  end
+  helper_method :current_category
 end

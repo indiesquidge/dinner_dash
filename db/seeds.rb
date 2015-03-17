@@ -3,16 +3,15 @@ class SeedItem
     20.times do
       Item.create(name: Faker::Commerce.product_name,
                   description: Faker::Hacker.say_something_smart,
-                  image: Faker::Avatar.image,
-                  price: Faker::Commerce.price,
-                  status: "active")
+                  price: Faker::Commerce.price)
     end
   end
 
   def self.retire_5_items
     5.times do
-      item = Item.all.uniq.sample
+      item = Item.all.sample
       item.status = "retired"
+      item.save!
     end
   end
 end
@@ -60,7 +59,7 @@ class SeedUser
                 display_name: "novohispano")
   end
 
-  def self.create_josh
+  def self.create_admin_josh
     User.create(first_name: "Josh",
                 last_name: "Cheek",
                 email: "demo+josh@jumpstartlab.com",
@@ -84,15 +83,17 @@ class SeedOrder
 
   def self.three_completed_orders
     3.times do
-      order = Order.all.uniq.sample
+      order = Order.all.sample
       order.status = "completed"
+      order.save!
     end
   end
 
   def self.two_cancelled_orders
     2.times do
-      order = Order.all.uniq.sample
+      order = Order.all.sample
       order.status = "cancelled"
+      order.save!
     end
   end
 end
@@ -107,7 +108,7 @@ SeedItemCategory.create_item_category_associations
 SeedUser.create_rachel
 SeedUser.create_jeff
 SeedUser.create_jorge
-SeedUser.create_josh
+SeedUser.create_admin_josh
 
 SeedOrder.create_10_orders
 SeedOrder.three_completed_orders

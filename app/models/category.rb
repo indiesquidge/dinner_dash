@@ -1,7 +1,9 @@
 class Category < ActiveRecord::Base
   has_many :item_categories
   has_many :items, through: :item_categories
-  validates :name, presence: true, uniqueness: true, length: { maximum: 42 }
+  validates :name, presence: { message: "must be filled in." },
+        uniqueness: { message: "of this category already exists!" },
+        length: { maximum: 42 }
 
   before_validation :parameterize, :downcase_name
 
