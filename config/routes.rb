@@ -18,4 +18,6 @@ Rails.application.routes.draw do
 
   resources :cart_items, only: [:create, :destroy]
   get "/cart", to: "cart_items#index"
+
+  resources :orders
 end
