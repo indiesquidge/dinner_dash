@@ -19,6 +19,14 @@ Rails.application.routes.draw do
   resources :cart_items, only: [:create, :destroy]
   get "/cart", to: "cart_items#index"
 
+  resources :orders do
+    member do # for an individual order
+      get "cancel"
+      get "paid"
+      get "complete"
+    end
+  end
+
   get "errors/file_not_found"
   get "errors/unprocessable"
   get "errors/internal_server_error"
