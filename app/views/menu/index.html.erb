@@ -2,7 +2,8 @@
 <div class="row">
   <% @items.each do |item| %>
     <div class="col-sm-3 items">
-      <%= link_to item.display_name, menu_item_path(item) %><br>
+      <%= image_tag item.image.url, height: 170 %><br/>
+      <%= link_to item.display_name, menu_item_path(item) %><br/>
       <%= button_to "Add to Cart", cart_items_path(item: item), class: "btn btn-default" %>
       <div class="btn-group btn-group-xs" role="group">
       <% item.categories.each do |item_category| %>
