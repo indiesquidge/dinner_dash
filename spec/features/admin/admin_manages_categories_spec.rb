@@ -45,8 +45,10 @@ RSpec.describe "admin manages categories", type: :feature do
     expect(page).to have_content("Item has been successfully updated!")
   end
 
-  xit "can add categories to existing items" do
+  it "can add categories to existing items" do
     create_admin_user
+    item = create(:item)
+    category = create(:category)
     visit edit_menu_item_path(item)
     find(:css, "#category_ids_[value='#{category.id}']").set(true)
     click_link_or_button "Submit"
