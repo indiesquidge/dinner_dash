@@ -17,4 +17,9 @@ class ApplicationController < ActionController::Base
     time.strftime("%B %d, %Y, %l:%M %p")
   end
   helper_method :format_time
+
+  def cart_data
+    session[:cart] = @cart.data
+  end
+  helper_method :cart_contents
 end

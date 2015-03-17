@@ -11,3 +11,5 @@
 <% end %>
 
 Total Items: <%= @cart.count_total %>
+
+<%= link_to "Checkout", checkout_path, method: :post %>

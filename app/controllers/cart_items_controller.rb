@@ -1,8 +1,7 @@
 class CartItemsController < ApplicationController
   def create
     item = Item.find_by(parameterized_name: params[:item])
-
-    session[:cart] = @cart.data
+    cart_data
     @cart.add_item(item)
     flash[:notice] =
     "You have #{pluralize(@cart.item_quantity(item), item.name)} in your cart."
@@ -16,8 +15,7 @@ class CartItemsController < ApplicationController
   def destroy
     item = Item.find(params[:id])
     @cart.remove_item(item)
-
-    session[:cart] = @cart.data
+    cart_data
     flash[:notice] = "The item has been removed from your cart."
     redirect_to cart_path
   end
