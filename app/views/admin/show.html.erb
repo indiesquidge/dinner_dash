@@ -40,6 +40,7 @@
         <th>Customer</th>
         <th>Date Ordered</th>
         <th>Status</th>
+        <th>Action</th>
       </tr>
       <% @orders.ordered.each do |order| %>
       <tr>
@@ -48,6 +49,8 @@
         <%=  %></td>
         <td><%= format_time(order.created_at) %></td>
         <td><%= order.status %></td>
+        <td><%= link_to "Cancel Order", cancel_order_path(order), class: "btn btn-xs btn-danger" %>
+            <%= link_to "Mark as Paid", paid_order_path(order), class: "btn btn-xs btn-info" %></td>
       </tr>
       <% end %>
     </table>
@@ -60,6 +63,7 @@
         <th>Customer</th>
         <th>Date Ordered</th>
         <th>Status</th>
+        <th>Actions</th>
       </tr>
       <% @orders.paid.each do |order| %>
       <tr>
@@ -68,6 +72,8 @@
         <%=  %></td>
         <td><%= format_time(order.created_at) %></td>
         <td><%= order.status %></td>
+        <td><%= link_to "Cancel Order", cancel_order_path(order), class: "btn btn-xs btn-danger" %>
+            <%= link_to "Mark as Completed", complete_order_path(order), class: "btn btn-xs btn-primary" %></td>
       </tr>
       <% end %>
     </table>
