@@ -11,6 +11,16 @@ RSpec.feature "user tries to checkout cart", type: :feature do
     expect(page).to have_content("salted caramel peanut butter cup")
   end
 
+  it "will be redirected to login if they are not authenticated" do
+    create_item_and_add_to_cart
+    visit cart_path
+    click_link_or_button("Checkout")
+    within("div.alert-danger") do
+      expect(page).to have_content("You must sign in if you want to place an order.")
+    end
+    expect(current_path).to eq(login_path)
+  end
+
   def create_item_and_add_to_cart
     create(:item)
     visit menu_path
