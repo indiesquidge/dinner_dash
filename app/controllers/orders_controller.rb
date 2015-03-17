@@ -2,8 +2,8 @@ class OrdersController < ApplicationController
   def create
     if current_user
       create_order
-      # reset_cart
-      flash[:success] = "Your order has been places."
+      reset_cart
+      flash[:success] = "Your order has been placed."
       redirect_to account_path
     else
       flash[:error] = "You must sign in if you want to place an order."
@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
   private
 
   def reset_cart
-    session[:cart] = []
+    session[:cart] = Hash.new
   end
 
   def create_order
