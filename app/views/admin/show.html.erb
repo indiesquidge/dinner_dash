@@ -1,3 +1,18 @@
 <h1>Admin Dashboard</h1>
 <p><%= link_to "Create New Menu Item", new_menu_item_path(@item), class: "btn btn-success" %></p>
 <p><%= link_to "Create New Category", new_menu_category_path(@item), class: "btn btn-success" %></p>
+<h2>List of All Orders</h2>
+<!-- go get all the orders from the database and iterate through them to pick out all completed orders  -->
+<h3> Orders by Status:</h3>
+  <ul>
+    <li>Ordered: <%= @orders.ordered.count %></li>
+    <li>Paid: <%= @orders.paid.count %></li>
+    <li>Cancelled: <%= @orders.cancelled.count %></li>
+    <li>Completed :<%= @orders.completed.count %></li>
+  </ul>
+
+
+<!-- user_id
+created_at
+updated_at
+status" -->
