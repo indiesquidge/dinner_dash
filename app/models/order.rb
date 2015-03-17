@@ -20,5 +20,4 @@ class Order < ActiveRecord::Base
   def line_item_price(item, order)
     item.price * quantity_of_item(item, order)
   end
-
 end

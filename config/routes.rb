@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get "/cart", to: "cart_items#index"
 
   resources :orders do
-    member do #for an individual order
+    member do # for an individual order
       get "cancel"
       get "paid"
       get "complete"
