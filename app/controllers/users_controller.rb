@@ -15,6 +15,11 @@ class UsersController < ApplicationController
   end
   helper_method :line_item_price
 
+  def order_completed_or_cancelled?(order)
+    order.status == "cancelled" || order.status == "completed"
+  end
+  helper_method :order_completed_or_cancelled?
+
   private
 
   def authorize
