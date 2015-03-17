@@ -6,9 +6,23 @@ RSpec.feature "Admin user", type: :feature do
     expect(page).to have_content("Admin Dashboard")
   end
 
-  it "can see a list of all orders" do
+  it "can view total number of orders by status" do
+    create(:order)
     admin_visits_dashboard
-    expect(page).to have_content("List of All Orders")
+    expect(page).to have_content("Cancelled: 1")
+  end
+
+  it "can link to individual orders" do
+    create(:order)
+    admin_visits_dashboard
+    click_link_or_button("Order 1")
+    expect(page).to have_content("Order 1 Information")
+  end
+
+  it "can filter orders by status type" do
+    admin_visits_dashboard
+    click_link_or_button("Cancelled")
+    expect(page).to have_content("Order 1")
   end
 
   # it "can see a list of all orders" do
