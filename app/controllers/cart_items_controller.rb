@@ -1,7 +1,7 @@
 class CartItemsController < ApplicationController
   def create
     item = Item.find_by(parameterized_name: params[:item])
-    cart_data
+    cart_data    
     @cart.add_item(item)
     flash[:notice] =
     "You have #{pluralize(@cart.item_quantity(item), item.name)} in your cart."
