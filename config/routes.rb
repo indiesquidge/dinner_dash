@@ -19,5 +19,11 @@ Rails.application.routes.draw do
   resources :cart_items, only: [:create, :destroy]
   get "/cart", to: "cart_items#index"
 
-  resources :orders
+  resources :orders do
+    member do #for an individual order
+      get "cancel"
+      get "paid"
+      get "complete"
+    end
+  end
 end
