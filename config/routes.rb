@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   resources :cart_items, only: [:create, :destroy]
   get "/cart", to: "cart_items#index"
+  post "/checkout", to: "orders#create"
 
   resources :orders do
     member do # for an individual order
