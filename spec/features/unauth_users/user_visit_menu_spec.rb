@@ -9,6 +9,6 @@ RSpec.describe "user visits website", type: :feature do
 
   it "can see store info on the home page" do
     visit '/'
-    expect(page).to have_content("Hours")
+    expect(page).to have_content("Welcome")
   end
 end

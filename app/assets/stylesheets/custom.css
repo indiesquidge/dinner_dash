@@ -39,6 +39,7 @@ body {
   overflow: hidden;
   margin-left: auto;
   margin-right: auto;
+  border: 5px solid #9c5619;
 }
 
 .logo-image-background {
@@ -62,6 +63,6 @@ body {
 }
 
 /*#navbar-color {
-  background-color: #C6B609;
-  border-color: #C6B609;
+  background-color: #9c5619;
+  border-color: #9c5619;
 }*/

@@ -2,7 +2,11 @@
 
 <div class="row">
   <% @items.each do |item| %>
-    <div class="col-sm-3 items">
+    <div class="col-sm-4 items">
+      <div class="image-background">
+        <%= image_tag item.image.url, class: "menu-image" %>
+      </div>
+      <br>
       <%= item.name %>
       <%= button_to "Add to Cart", cart_items_path(item: item), class: "btn btn-default" %>
     </div>

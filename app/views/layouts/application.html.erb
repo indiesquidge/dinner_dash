@@ -23,13 +23,12 @@
         <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+              <a href="#" class="dropdown-toggle" id="filter_items" data-toggle="dropdown" role="button" aria-expanded="false">
                 Menu<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
                   <li><%= link_to "All Items", menu_path %><span class="sr-only"></span></li>
-                  <li>
-                    <% Category.all.each do |category| %>
-                    <%= link_to category.name.capitalize, menu_category_path(category.name) %>
+                    <% all_categories.each do |category| %>
+                    <li><%= link_to category.name.capitalize, menu_category_path(category.name) %></a></li>
                     <% end %>
                   </li>
                 </ul>
