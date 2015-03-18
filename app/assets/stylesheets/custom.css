@@ -11,11 +11,18 @@ body {
   border-radius: 25px;
 }
 
+.front-page {
+  text-align: center;
+}
+
+.front-page-header {
+  padding:20px;
+}
+
 .items {
   padding: 10px;
   border-radius: 25px;
-  margin-left: auto;
-  margin-right: auto;
+  text-align: center;
   }
 
 .item-title {
@@ -34,8 +41,20 @@ body {
   margin-right: auto;
 }
 
+.logo-image-background {
+  display: inline-block;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .menu-image {
   height: 150px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .menu-buttons {
