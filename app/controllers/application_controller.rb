@@ -46,4 +46,9 @@ class ApplicationController < ActionController::Base
     order.status == "cancelled" || order.status == "completed"
   end
   helper_method :order_completed_or_cancelled?
+
+  def all_categories
+    Category.all
+  end
+  helper_method :all_categories
 end

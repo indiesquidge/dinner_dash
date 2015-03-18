@@ -12,7 +12,7 @@ RSpec.feature "Unauthenticated user", type: :feature do
     within ("div.alert-info") do
       expect(page).to have_content("Sign in successful")
     end
-    expect(page).to have_content("Account Settings")
+    expect(page).to have_content("Account")
   end
 
   it "cannot sign_in with incorrect email or password" do
