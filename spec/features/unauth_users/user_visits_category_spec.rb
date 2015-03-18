@@ -7,7 +7,9 @@ RSpec.describe "user can find things by category", type: :feature do
     item.categories << category
 
     visit "/menu"
-    click_link_or_button("Specials")
+    within(".items") do
+      click_link_or_button("Specials")
+    end
     assert page.current_path == "/menu/categories/specials"
   end
 

@@ -2,10 +2,47 @@ h1 {
   text-align: center;
 }
 
-.items {
-  background-color: #d3d3d3;
-  padding: 10px;
-  margin: 25px;
-  border-radius: 25px;
-  text-align: center;
+body {
+  background-color: #9BA9B3 !important;
 }
+
+.container {
+  background-color: #9BA9B3;
+  border-radius: 25px;
+}
+
+.items {
+  padding: 10px;
+  border-radius: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  }
+
+.item-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.image-background {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.menu-image {
+  height: 150px;
+}
+
+.menu-buttons {
+  margin: 0 auto !important;
+}
+
+/*#navbar-color {
+  background-color: #C6B609;
+  border-color: #C6B609;
+}*/
