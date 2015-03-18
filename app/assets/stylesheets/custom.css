@@ -9,3 +9,7 @@ h1 {
   border-radius: 25px;
   text-align: center;
 }
+
+#admin-buttons {
+  text-align: center;
+}
