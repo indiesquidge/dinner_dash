@@ -12,6 +12,12 @@ RSpec.feature "Admin user", type: :feature do
     expect(page).to have_content("Cancelled 1")
   end
 
+  it "can view customers emails" do
+    create(:order)
+    admin_visits_dashboard
+    expect(page).to have_content("richard@example.com")
+  end
+
   it "can link to individual orders" do
     create(:order)
     admin_visits_dashboard
@@ -76,6 +82,7 @@ RSpec.feature "Admin user", type: :feature do
     admin_visits_dashboard
     click_link_or_button("See All Items")
     expect(current_path).to eq(menu_path)
+    expect(page).to have_content("Menu")
   end
 
   it "can click on button and see all categories" do

@@ -30,14 +30,16 @@
       <tr>
         <th>Order ID</th>
         <th>Customer</th>
+        <th>Customer Email</th>
         <th>Date Ordered</th>
         <th>Status</th>
       </tr>
       <% @orders.each do |order| %>
       <tr>
-        <td><%= link_to "Order #{order.id}", order_path(order) %></td>
-        <td><%= link_to "#{order.user.full_name}", account_path(order.user) %>
-        <%=  %></td>
+        <td><%= link_to "Order #{order.id}", order %></td>
+        <td><%= link_to "#{order.user.full_name}", account_path(order.user) %></td>
+        <td><%= link_to "#{order.user.email}", account_path(order.user) %></td>
+
         <td><%= format_time(order.created_at) %></td>
         <td><%= order.status %></td>
       </tr>
@@ -50,6 +52,7 @@
       <tr>
         <th>Order ID</th>
         <th>Customer</th>
+        <th>Customer Email</th>
         <th>Date Ordered</th>
         <th>Status</th>
         <th>Action</th>
@@ -57,8 +60,9 @@
       <% @orders.ordered.each do |order| %>
       <tr>
         <td><%= link_to "Order #{order.id}", order_path(order) %></td>
-        <td><%= link_to "#{order.user.full_name}", account_path(order.user) %>
-        <%=  %></td>
+        <td><%= link_to "#{order.user.full_name}", account_path(order.user) %></td>
+        <td><%= link_to "#{order.user.email}", account_path(order.user) %></td>
+
         <td><%= format_time(order.created_at) %></td>
         <td><%= order.status %></td>
         <td><%= link_to "Cancel Order", cancel_order_path(order), class: "btn btn-xs btn-danger" %>
@@ -73,6 +77,7 @@
       <tr>
         <th>Order ID</th>
         <th>Customer</th>
+        <th>Customer Email</th>
         <th>Date Ordered</th>
         <th>Status</th>
         <th>Actions</th>
@@ -80,8 +85,9 @@
       <% @orders.paid.each do |order| %>
       <tr>
         <td><%= link_to "Order #{order.id}", order_path(order) %></td>
-        <td><%= link_to "#{order.user.full_name}", account_path(order.user) %>
-        <%=  %></td>
+        <td><%= link_to "#{order.user.full_name}", account_path(order.user) %></td>
+        <td><%= link_to "#{order.user.email}", account_path(order.user) %></td>
+
         <td><%= format_time(order.created_at) %></td>
         <td><%= order.status %></td>
         <td><%= link_to "Cancel Order", cancel_order_path(order), class: "btn btn-xs btn-danger" %>
@@ -96,6 +102,7 @@
       <tr>
         <th>Order ID</th>
         <th>Customer</th>
+        <th>Customer Email</th>
         <th>Date Ordered</th>
         <th>Date Cancelled</th>
         <th>Status</th>
@@ -103,8 +110,9 @@
       <% @orders.cancelled.each do |order| %>
       <tr>
         <td><%= link_to "Order #{order.id}", order_path(order) %></td>
-        <td><%= link_to "#{order.user.full_name}", account_path(order.user) %>
-        <%=  %></td>
+        <td><%= link_to "#{order.user.full_name}", account_path(order.user) %></td>
+        <td><%= link_to "#{order.user.email}", account_path(order.user) %></td>
+
         <td><%= format_time(order.created_at) %></td>
         <td><%= format_time(order.updated_at) %></td>
         <td><%= order.status %></td>
@@ -118,6 +126,7 @@
       <tr>
         <th>Order ID</th>
         <th>Customer</th>
+        <th>Customer Email</th>
         <th>Date Ordered</th>
         <th>Date Completed</th>
         <th>Status</th>
@@ -125,8 +134,8 @@
       <% @orders.completed.each do |order| %>
       <tr>
         <td><%= link_to "Order #{order.id}", order_path(order) %></td>
-        <td><%= link_to "#{order.user.full_name}", account_path(order.user) %>
-        <%=  %></td>
+        <td><%= link_to "#{order.user.full_name}", account_path(order.user) %></td>
+        <td><%= link_to "#{order.user.email}", account_path(order.user) %></td>
         <td><%= format_time(order.created_at) %></td>
         <td><%= format_time(order.updated_at) %></td>
         <td><%= order.status %></td>
