@@ -22,6 +22,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :format_time
 
+  def cart_data
+    session[:cart] = @cart.data
+  end
+  helper_method :cart_data
+
   def current_category
     Category.find_by(name: params[:category_name])
   end
