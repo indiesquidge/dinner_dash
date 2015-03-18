@@ -1,15 +1,19 @@
-<h1>Menu</h1>
+<h1>All Da Cookies</h1>
+<br>
 <div class="row">
   <% @items.each do |item| %>
-    <div class="col-sm-3 items">
-      <%= image_tag item.image.url, height: 170 %><br/>
-      <%= link_to item.display_name, menu_item_path(item) %><br/>
-      <%= button_to "Add to Cart", cart_items_path(item: item), class: "btn btn-default" %>
-      <div class="btn-group btn-group-xs" role="group">
-      <% item.categories.each do |item_category| %>
-        <%= link_to item_category.display_name, menu_category_path(item_category), class: "btn btn-default" %>
-      <% end  %>
-      </div>
+  <div class="col-sm-4 items" data-categories="<%= item.categories.map(&:display_name).join(":") %>">
+    <div class="image-background">
+      <%= image_tag item.image.url, class: "menu-image" %>
     </div>
+    <br/>
+    <%= link_to item.display_name, menu_item_path(item), class: "item-title" %><br/>
+    <%= button_to "Add to Cart", cart_items_path(item: item), class: "btn btn-default" %>
+    <div class="btn-group btn-group-xs" role="group">
+    <% item.categories.each do |item_category| %>
+      <%= link_to item_category.display_name, menu_category_path(item_category), class: "btn btn-default" %>
+    <% end  %>
+    </div>
+  </div>
   <% end %>
 </div>
