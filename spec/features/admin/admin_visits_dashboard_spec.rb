@@ -6,6 +6,11 @@ RSpec.feature "Admin user", type: :feature do
     expect(page).to have_content("Admin Dashboard")
   end
 
+  it "can see a happy message if there aren't any orders" do
+    admin_visits_dashboard
+    expect(page).to have_content("Cheer up!")
+  end
+
   it "can view total number of orders by status" do
     create(:order)
     admin_visits_dashboard

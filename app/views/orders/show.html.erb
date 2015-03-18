@@ -1,15 +1,14 @@
 <h1>Order <%= @order.id %> Information</h1>
 
 <h4>Order on <%= format_time(@order.created_at) %></h4>
-  <% @order.items.each do |item| %>
-  <p><%= link_to item.name, menu_item_path(item.name) %>
-    / Quantity: <%= quantity_of_item(item, @order) %>
-    / Price: <%= number_to_currency(line_item_price(item, @order)) %></p>
-    <% end %>
 
-  <p>Total: <%= number_to_currency(@order.total_price) %></p>
-  <p>Status: <%= @order.status %></p>
-
-  <% if @order.status == "cancelled" || @order.status == "completed" %>
-    <p><%= "Order was " + @order.status + " at " + format_time(@order.updated_at) %></p>
+<% @order.items.each do |item| %>
+<p><%= link_to item.name, menu_item_path(item.name) %>
+  / Quantity: <%= quantity_of_item(item, @order) %>
+  / Price: <%= number_to_currency(line_item_price(item, @order)) %></p>
   <% end %>
+<p>Total: <%= number_to_currency(@order.total_price) %></p>
+<p>Status: <%= @order.status %></p>
+<% if @order.status == "cancelled" || @order.status == "completed" %>
+  <p><%= "Order was " + @order.status + " at " + format_time(@order.updated_at) %></p>
+<% end %>
