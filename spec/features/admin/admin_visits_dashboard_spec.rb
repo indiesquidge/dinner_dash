@@ -72,6 +72,19 @@ RSpec.feature "Admin user", type: :feature do
     expect(page).to have_content("Cancelled 1")
   end
 
+  it "can click on button and see all items" do
+    admin_visits_dashboard
+    click_link_or_button("See All Items")
+    expect(current_path).to eq(menu_path)
+  end
+
+  it "can click on button and see all categories" do
+    admin_visits_dashboard
+    click_link_or_button("See All Categories")
+    expect(current_path).to eq(menu_categories_path)
+    expect(page).to have_content("All Categories")
+  end
+
   private
 
   def admin_visits_dashboard

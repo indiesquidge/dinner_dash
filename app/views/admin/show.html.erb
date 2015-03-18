@@ -1,14 +1,16 @@
 <h1>Admin Dashboard</h1>
 <br>
-<div class="col-sm-4" id="admin-buttons">
+<div class="col-sm-3" id="admin-buttons">
   <p><%= link_to "Create New Menu Item", new_menu_item_path(@item), class: "btn btn-success" %></p>
 </div>
-
-<div class="col-sm-4" id="admin-buttons">
+<div class="col-sm-3" id="admin-buttons">
   <p><%= link_to "Create New Category", new_menu_category_path(@item), class: "btn btn-success" %></p>
 </div>
-<div class="col-sm-4" id="admin-buttons">
+<div class="col-sm-3" id="admin-buttons">
   <p><%= link_to "See All Items", menu_path, class: "btn btn-success" %></p>
+</div>
+<div class="col-sm-3" id="admin-buttons">
+  <p><%= link_to "See All Categories", menu_categories_path, class: "btn btn-success" %></p>
 </div>
 <br>
 <br>
