@@ -19,7 +19,7 @@ class Cart
   end
 
   def total_price
-    (data.map { |k, v| Item.find(k.to_i).price * v}).reduce(:+)
+    (data.map { |k, v| Item.find(k.to_i).price * v }).reduce(:+)
   end
 
   def display_items

@@ -3,8 +3,9 @@
 <% @cart.display_items.each do |item,quantity| %>
   <p>
     <%= link_to item.name, menu_item_path(item) %><br>
-    <%= number_to_currency(item.price) %><br>
-    Quantity: <%= quantity %><br/>
+    Price Per Unit: <%= number_to_currency(item.price) %><br>
+    Quantity: <%= quantity %> /
+    Total For This Item: <%= number_to_currency(item.price * quantity) %><br/>
     <%= link_to "Remove from Cart", cart_item_path(id: item.id), method: :delete %><br>
     <%= button_to "Add Another", cart_items_path(item: item) %></br>
   </p>
