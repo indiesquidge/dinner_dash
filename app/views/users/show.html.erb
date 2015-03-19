@@ -1,6 +1,6 @@
-<h1>Account Settings</h1>
+<h1>My Account</h1>
 
-<% @orders.each do |order| %>
+<% @orders.reverse.each do |order| %>
   <h4>Your Order on <%= format_time(order.created_at) %></h4>
   <% order.items.each do |item| %>
     <!-- Need to change this to link to the individual item eventually -->
