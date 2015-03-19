@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     get "/dashboard", to: "admin#show"
   end
 
-  resources :cart_items, only: [:create, :destroy]
+  resources :cart_items, only: [:create, :update, :destroy]
   get "/cart", to: "cart_items#index"
   post "/checkout", to: "orders#create"
 

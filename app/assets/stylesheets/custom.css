@@ -65,6 +65,10 @@ button.glyphicon {
   text-align: center;
 }
 
+#checkout-item {
+  padding: 20px;
+}
+
 #checkout-total {
   background-color: #d3d3d3;
   border-radius: 25px;

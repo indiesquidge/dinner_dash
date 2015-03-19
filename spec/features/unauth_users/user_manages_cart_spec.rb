@@ -35,6 +35,14 @@ RSpec.describe "user managing cart", type: :feature do
     expect(page).to have_content("12.00")
   end
 
+  it "allows user to delete all of one item at once" do
+    create_item_and_add_to_cart
+    visit cart_path
+    page.click_link('', :href => '/cart_items?item=salted-caramel-peanut-butter-cup')
+    click_link_or_button("Remove All")
+    expect(page).to have_content("Total Items: 0")
+  end
+
   it "can sign in and the cart should not change" do
     create_item_and_add_to_cart
     visit cart_path
