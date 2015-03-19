@@ -1,18 +1,30 @@
 <h1>Your Cart</h1>
 
 <% @cart.display_items.each do |item,quantity| %>
-  <p>
-    <%= link_to item.name, menu_item_path(item) %><br>
-    Price Per Unit: <%= number_to_currency(item.price) %><br>
-    Quantity: <%= quantity %> /
-    Total For This Item: <%= number_to_currency(item.price * quantity) %><br/>
-    <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
-    <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
-    <%= link_to "Remove from Cart", cart_item_path(id: item.id), method: :delete %><br>
-    <%= button_to "Add Another", cart_items_path(item: item) %></br>
-  </p>
+  <div class="col-sm-4">
+    <div class="col-sm-9">
+      <p>
+        <%= link_to item.name, menu_item_path(item) %><br>
+        Price Per Unit: <%= number_to_currency(item.price) %><br>
+        Quantity: <%= quantity %><br>
+        Total For This Item: <%= number_to_currency(item.price * quantity) %></p>
+    </div>
+    <div class="col-sm-3">
+      <div class="btn-group">
+        <%= link_to cart_items_path(item: item), method: :post, class: "btn btn-default" do %>
+          <span class="glyphicon glyphicon-arrow-up" aria-hidden="true"></span>
+        <% end %>
+
+        <%= link_to cart_item_path(id: item.id), method: :delete, class: "btn btn-default" do %>
+          <span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span>
+        <% end %>
+      </div>
+    </div>
+  </div>
 <% end %>
 
-<p>Total Items: <%= @cart.count_total %></p>
-<p>Total Price: <%= number_to_currency(@cart.total_price) %></p>  </p>
-<%= button_to "Checkout", checkout_path, method: :post %>
+<div class="col-xs-12" id="checkout-total">
+  <p>Total Items: <%= @cart.count_total %></p>
+  <p>Total Price: <%= number_to_currency(@cart.total_price) %></p>  </p>
+  <%= button_to "Checkout", checkout_path, method: :post %>
+</div>

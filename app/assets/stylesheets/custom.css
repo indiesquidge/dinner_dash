@@ -1,5 +1,6 @@
 h1 {
   text-align: center;
+  padding-bottom: 20px;
 }
 
 body {
@@ -31,6 +32,10 @@ body {
   font-size: 1.2em;
 }
 
+button.glyphicon {
+  font-size:12px !important;
+}
+
 .image-background {
   display: inline-block;
   width: 150px;
@@ -58,6 +63,13 @@ body {
 
 #category-table {
   text-align: center;
+}
+
+#checkout-total {
+  background-color: #d3d3d3;
+  border-radius: 25px;
+  padding: 20px;
+  margin: 20px;
 }
 
 .menu-image {

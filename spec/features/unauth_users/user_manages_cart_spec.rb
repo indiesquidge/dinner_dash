@@ -22,7 +22,7 @@ RSpec.describe "user managing cart", type: :feature do
   it "allows users to remove things from their cart" do
     create_item_and_add_to_cart
     visit cart_path
-    click_link_or_button "Remove from Cart"
+    page.click_link('', :href => '/cart_items/1')
     expect(page).to have_content("The item has been removed from your cart")
     expect(page).to_not have_content("salted caramel")
   end
@@ -30,7 +30,7 @@ RSpec.describe "user managing cart", type: :feature do
   it "allows users to increase the quantity of an item in their cart" do
     create_item_and_add_to_cart
     visit cart_path
-    click_link_or_button "Add Another"
+    page.click_link('', :href => '/cart_items?item=salted-caramel-peanut-butter-cup')
     expect(page).to have_content("Quantity: 2")
     expect(page).to have_content("12.00")
   end
