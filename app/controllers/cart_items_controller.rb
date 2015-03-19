@@ -22,9 +22,6 @@ class CartItemsController < ApplicationController
   def destroy
     item = Item.find(params[:id])
     @cart.remove_all_of_item(item)
-    # key = item.id.to_s
-    # @cart.data[key] = 0
-    # cart_data
     flash[:notice] = "The item has been entirely removed from your cart."
     redirect_to cart_path
   end
