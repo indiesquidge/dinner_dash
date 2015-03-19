@@ -86,7 +86,7 @@ button.glyphicon {
 }
 
 .retired-item {
-  float: right;
+  clear: all;
   color: red;
   font-weight: bold;
 }
