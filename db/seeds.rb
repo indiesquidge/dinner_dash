@@ -1,8 +1,11 @@
+
 class SeedItem
   def self.create_20_active_items
+    adjectives = ["delicious", "chewy", "crispy", "wholesome", "crunchy", "heavenly"]
+    cookies    = ["chocolate chip", "sugar", "whoopi pie", "almond", "snickerdoodle", "peanut butter"]
     20.times do
-      Item.create(name: Faker::Commerce.product_name,
-                  description: Faker::Hacker.say_something_smart,
+      Item.create(name: "#{adjectives.sample} #{cookies.sample} cookie",
+                  description: "very #{adjectives.sample}",
                   price: Faker::Commerce.price)
     end
   end
@@ -18,8 +21,9 @@ end
 
 class SeedCategory
   def self.create_5_categories
+    categories = ["gluten free", "sugar free", "nutty", "chocolate"]
     5.times do
-      Category.create(name: Faker::Commerce.department(1, true))
+      Category.create(name: "#{categories.sample}")
     end
   end
 end
