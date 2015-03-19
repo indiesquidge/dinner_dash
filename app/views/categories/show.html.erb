@@ -7,7 +7,7 @@
         <%= image_tag item.image.url, class: "menu-image" %>
       </div>
       <br>
-      <%= item.name %>
+      <%= link_to item.name, menu_item_path(item) %>
       <%= button_to "Add to Cart", cart_items_path(item: item), class: "btn btn-default" %>
     </div>
   <% end %>
