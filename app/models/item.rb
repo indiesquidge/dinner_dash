@@ -4,6 +4,9 @@ class Item < ActiveRecord::Base
   has_many :item_orders
   has_many :orders, through: :item_orders
 
+  scope :active_items, -> { where(status: "active").order_by_id }
+  scope :retired_items, -> { where(status: "retired").order_by_id }
+
   validates :name, presence: true, uniqueness: true
   validates :description, :price, presence: true
   validates :price, numericality: { greater_than: 0 }
@@ -27,6 +30,10 @@ class Item < ActiveRecord::Base
   end
 
   private
+
+  def self.order_by_id
+    order(:id).reverse
+  end
 
   def downcase_name
     return if name.nil?
