@@ -19,8 +19,12 @@
     <% end %>
   </p>
   <p>
-    <%= f.label :select_image %><br />
-    <%= f.file_field :image %>
+  <%= f.label "Status: ", class: "status-label" %>
+  <%= f.select(:status, options_for_select([["active", "active"], ["retired", "retired"]]), selected: @item.status) %>
+  </p>
+  <p>
+  <%= f.label :select_image %><br />
+  <%= f.file_field :image %>
   </p>
   <%= f.submit "Submit", class: 'btn btn-default'%>
 <% end %>

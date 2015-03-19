@@ -11,4 +11,10 @@ RSpec.describe "user visits website", type: :feature do
     visit "/"
     expect(page).to have_content("Welcome")
   end
+
+  it "cannot see items that are retired" do
+    create(:item, :retired)
+    visit menu_path
+    expect(page).not_to have_content("Salted Caramel Peanut Butter Cup")
+  end
 end

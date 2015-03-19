@@ -9,8 +9,9 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.create(item_params)
+    @item = Item.new(item_params)
     if @item.save
+      update_categories
       flash[:success] = "New item has been created!"
       redirect_to menu_item_path(@item)
     else
@@ -26,12 +27,8 @@ class ItemsController < ApplicationController
 
   def update
     @item = Item.find_by(parameterized_name: params[:item_name])
-    if @item.update_attributes(item_params)
-      ItemCategory.destroy_all(item_id: @item.id)
-      params[:category_ids].each do |category|
-        category_id = category.to_i
-        ItemCategory.create(item_id: @item.id, category_id: category_id)
-      end
+    if @item.update(item_params)
+      update_categories
       flash[:success] = "Item has been successfully updated!"
       redirect_to menu_item_path(@item)
     else
@@ -42,7 +39,15 @@ class ItemsController < ApplicationController
 
   private
 
+  def update_categories
+    ItemCategory.destroy_all(item_id: @item.id)
+    params[:category_ids].each do |category|
+      category_id = category.to_i
+      ItemCategory.create(item_id: @item.id, category_id: category_id)
+    end
+  end
+
   def item_params
-    params.require(:item).permit(:name, :description, :price, :image, :category_ids)
+    params.require(:item).permit(:name, :description, :price, :image, :category_ids, :status)
   end
 end

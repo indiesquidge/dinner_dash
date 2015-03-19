@@ -2,9 +2,11 @@
 <p><%= image_tag @item.image.url(:large) %></p>
 <p>Description: <%= @item.description %></p>
 <p>Price: <%= number_to_currency(@item.price) %></p>
-<p><%= button_to "Add to Cart", cart_items_path(item: @item), class: "btn btn-default" %></p>
+<% if @item.status == "active" %>
+  <p><%= button_to "Add to Cart", cart_items_path(item: @item), class: "btn btn-default" %></p>
+<% end %>
 
 <% if current_user.try(:role) == "admin" %>
   <p><%= link_to "Edit Item", edit_menu_item_path(@item), class: "btn btn-success" %>
-  </p>
+</p>
 <% end %>
