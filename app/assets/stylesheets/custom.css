@@ -111,6 +111,20 @@ button.glyphicon {
   font-size: 1.2em;
 }
 
+.orders_color_white {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.user_orders {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+
 /*#navbar-color {
   background-color: #9c5619;
   border-color: #9c5619;
