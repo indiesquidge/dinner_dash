@@ -39,15 +39,15 @@ class ItemsController < ApplicationController
 
   private
 
+  def item_params
+    params.require(:item).permit(:name, :description, :price, :image, :category_ids, :status)
+  end
+
   def update_categories
     ItemCategory.destroy_all(item_id: @item.id)
     params[:category_ids].each do |category|
       category_id = category.to_i
       ItemCategory.create(item_id: @item.id, category_id: category_id)
     end
-  end
-
-  def item_params
-    params.require(:item).permit(:name, :description, :price, :image, :category_ids, :status)
   end
 end

@@ -43,6 +43,7 @@ RSpec.describe "admin manages categories", type: :feature do
     find(:css, "#category_ids_[value='#{category.id}']").set(true)
     click_link_or_button "Submit"
     expect(page).to have_content("Item has been successfully updated!")
+    expect(item.categories).to eq([category])
   end
 
   it "can add categories to existing items" do

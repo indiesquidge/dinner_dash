@@ -2,15 +2,12 @@ require "rails_helper"
 
 RSpec.describe "admin managing items", type: :feature do
   it "must be admin to access create item page" do
-    create_admin_user
-    visit new_menu_item_path
-    expect(page).to have_content("Please enter your new item")
-  end
-
-  it "user cannot access create item page" do
     create(:user)
     visit new_menu_item_path
     expect(page).to have_content("You are not authorized to access this page")
+    create_admin_user
+    visit new_menu_item_path
+    expect(page).to have_content("Please enter your new item")
   end
 
   it "can create new item" do
