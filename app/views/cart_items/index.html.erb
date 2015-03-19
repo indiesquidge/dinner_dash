@@ -6,6 +6,8 @@
     Price Per Unit: <%= number_to_currency(item.price) %><br>
     Quantity: <%= quantity %> /
     Total For This Item: <%= number_to_currency(item.price * quantity) %><br/>
+    <span class="glyphicon glyphicon-triangle-top" aria-hidden="true"></span>
+    <span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span>
     <%= link_to "Remove from Cart", cart_item_path(id: item.id), method: :delete %><br>
     <%= button_to "Add Another", cart_items_path(item: item) %></br>
   </p>
