@@ -75,6 +75,10 @@ button.glyphicon {
   margin: 20px;
 }
 
+#hero-unit {
+  background-image: url(chocolate-chip.jpg);
+  }
+
 .menu-image {
   height: 150px;
   margin-left: auto;

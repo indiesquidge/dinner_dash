@@ -13,6 +13,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    authorize! :show, @order
   end
 
   def cancel
