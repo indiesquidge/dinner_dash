@@ -15,10 +15,12 @@ RSpec.describe "admin managing items", type: :feature do
 
   it "can create new item" do
     create_admin_user
+    category = create(:category)
     visit new_menu_item_path
     fill_in "item[name]", with: "fudge"
     fill_in "item[description]", with: "double chocolate"
     fill_in "item[price]", with: "600"
+    find(:css, "#category_ids_[value='#{category.id}']").set(true)
     click_link_or_button "Submit"
     assert page.current_path == "/menu/items/fudge"
     expect(page).to have_content("New item has been created!")
@@ -84,8 +86,6 @@ RSpec.describe "admin managing items", type: :feature do
     # expect(page).to have_css("img[alt='Cookie monster']")
   end
 
-<<<<<<< Updated upstream
-=======
   xit "can retire an item" do
     create_admin_user
     item = create(:item)
@@ -97,18 +97,6 @@ RSpec.describe "admin managing items", type: :feature do
     expect(item.status).to eq("retired")
   end
 
-  xit "can retire an item" do
-    create_admin_user
-    item = create(:item)
-    item.categories << create(:category)
-    visit edit_menu_item_path(item)
-    page.execute_script("$('#item_status').val('retired')")
-    click_link_or_button "Submit"
-    expect(page).to have_content("Item has been successfully updated!")
-    expect(item.status).to eq("retired")
-  end
-
->>>>>>> Stashed changes
   private
 
   def create_admin_user
