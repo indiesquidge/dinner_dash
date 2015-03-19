@@ -32,6 +32,7 @@ RSpec.describe "user managing cart", type: :feature do
     visit cart_path
     click_link_or_button "Add Another"
     expect(page).to have_content("Quantity: 2")
+    expect(page).to have_content("12.00")
   end
 
   it "can sign in and the cart should not change" do
