@@ -2,10 +2,75 @@ h1 {
   text-align: center;
 }
 
-.items {
-  background-color: #d3d3d3;
-  padding: 10px;
-  margin: 25px;
+body {
+  background-color: #9BA9B3 !important;
+}
+
+.container {
+  background-color: #9BA9B3;
   border-radius: 25px;
+}
+
+.front-page {
   text-align: center;
 }
+
+.front-page-header {
+  padding:20px;
+}
+
+.items {
+  padding: 10px;
+  border-radius: 25px;
+  text-align: center;
+  }
+
+.item-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.image-background {
+  display: inline-block;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  border: 5px solid #9c5619;
+}
+
+.logo-image-background {
+  display: inline-block;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#admin-buttons {
+  text-align: center;
+}
+
+#category-table {
+  text-align: center;
+}
+
+.menu-image {
+  height: 150px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.menu-buttons {
+  margin: 0 auto !important;
+}
+
+/*#navbar-color {
+  background-color: #9c5619;
+  border-color: #9c5619;
+}*/

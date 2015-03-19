@@ -1,0 +1,7 @@
+<h1>All Categories</h1>
+
+<% all_categories.each do |category| %>
+  <div class="col-sm-3" id="category-table">
+   <h4><%= link_to category.display_name, menu_category_path(category.name) %></h4>
+  </div>
+<% end %>

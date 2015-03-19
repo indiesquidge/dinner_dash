@@ -6,10 +6,21 @@ RSpec.feature "Admin user", type: :feature do
     expect(page).to have_content("Admin Dashboard")
   end
 
+  it "can see a happy message if there aren't any orders" do
+    admin_visits_dashboard
+    expect(page).to have_content("Cheer up!")
+  end
+
   it "can view total number of orders by status" do
     create(:order)
     admin_visits_dashboard
     expect(page).to have_content("Cancelled 1")
+  end
+
+  it "can view customers emails" do
+    create(:order)
+    admin_visits_dashboard
+    expect(page).to have_content("richard@example.com")
   end
 
   it "can link to individual orders" do
@@ -70,6 +81,20 @@ RSpec.feature "Admin user", type: :feature do
     click_link_or_button "Cancel Order"
     expect(page).to have_content("Paid 0")
     expect(page).to have_content("Cancelled 1")
+  end
+
+  it "can click on button and see all items" do
+    admin_visits_dashboard
+    click_link_or_button("See All Items")
+    expect(current_path).to eq(menu_path)
+    expect(page).to have_content("Menu")
+  end
+
+  it "can click on button and see all categories" do
+    admin_visits_dashboard
+    click_link_or_button("See All Categories")
+    expect(current_path).to eq(menu_categories_path)
+    expect(page).to have_content("All Categories")
   end
 
   private

@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
 
   def sign_in
     session[:user_id] = @user.id
-    redirect_to account_path, notice: "Sign in successful"
+    redirect_to menu_path, notice: "Sign in successful"
   end
 
   def user_found_and_authenticated
