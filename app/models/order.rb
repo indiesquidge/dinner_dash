@@ -12,8 +12,4 @@ class Order < ActiveRecord::Base
   def total_price
     items.inject(0) { |sum, item| sum + item.price }
   end
-
-  def line_item_price(item, order)
-    item.price * quantity_of_item(item, order)
-  end
 end
