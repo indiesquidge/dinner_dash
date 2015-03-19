@@ -4,7 +4,9 @@ h1 {
 }
 
 body {
-  background-color: #9BA9B3 !important;
+/*  background-color: #9BA9B3 !important;*/
+  background: #ebbd5b !important;
+
 }
 
 .container {
@@ -15,12 +17,19 @@ body {
   text-align: center;
 }
 
-.front-page-header {
-  padding:20px;
+.front-page-header span {
+  font-size: .7em;
 }
 
 .jumbotron {
   background-image: url(cookie-background.jpg);
+  background-repeat: no-repeat;
+  min-height: 534px;
+  width: 950px;
+}
+
+.jumbotron h1 {
+  font-size: 25;
 }
 
 .items {
@@ -96,6 +105,10 @@ button.glyphicon {
   clear: all;
   color: red;
   font-weight: bold;
+}
+
+.order_id_title {
+  font-size: 1.2em;
 }
 
 /*#navbar-color {
