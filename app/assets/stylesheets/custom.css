@@ -52,6 +52,14 @@ body {
   margin-right: auto;
 }
 
+#admin-buttons {
+  text-align: center;
+}
+
+#category-table {
+  text-align: center;
+}
+
 .menu-image {
   height: 150px;
   margin-left: auto;
