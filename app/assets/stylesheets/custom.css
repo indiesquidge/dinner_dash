@@ -85,6 +85,12 @@ button.glyphicon {
   margin: 0 auto !important;
 }
 
+.retired-item {
+  float: right;
+  color: red;
+  font-weight: bold;
+}
+
 /*#navbar-color {
   background-color: #9c5619;
   border-color: #9c5619;
