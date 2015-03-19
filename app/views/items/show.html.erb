@@ -1,7 +1,7 @@
 <h1><%= @item.display_name %></h1>
 <p><%= image_tag @item.image.url(:large) %></p>
 <p>Description: <%= @item.description %></p>
-<p>Price: <%= @item.price %></p>
+<p>Price: <%= number_to_currency(@item.price) %></p>
 <% if @item.status == "active" %>
   <p><%= button_to "Add to Cart", cart_items_path(item: @item), class: "btn btn-default" %></p>
 <% end %>

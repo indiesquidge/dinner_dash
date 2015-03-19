@@ -8,7 +8,7 @@ RSpec.feature "user tries to checkout cart", type: :feature do
     visit cart_path
     click_link_or_button("Checkout")
     expect(page).to have_content("paid")
-    expect(page).to have_content("salted caramel peanut butter cup")
+    expect(page).to have_content("Salted Caramel Peanut Butter Cup")
   end
 
   it "will be redirected to login if they are not authenticated" do
