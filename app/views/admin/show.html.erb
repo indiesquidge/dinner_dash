@@ -19,6 +19,7 @@
 <br>
 <h3> Orders by Status:</h3>
 
+<div class="orders_color_white">
 <ul class="nav nav-tabs" id="myTab">
   <li class="active"><a href="#all-orders">All Orders <span class="badge"><%= @orders.count %></span></a></li>
   <li><a href="#ordered">Ordered <span class="badge"><%= @orders.ordered.count %></span></a></li>
@@ -147,7 +148,7 @@
     </table>
   </div>
 </div>
-
+</div>
 <script>
   $('#myTab a').click(function (e) {
     e.preventDefault()
