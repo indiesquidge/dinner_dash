@@ -1,16 +1,17 @@
 <h1>My Account</h1>
 
 <% @orders.reverse.each do |order| %>
-  <h4>Your Order on <%= format_time(order.created_at) %></h4>
+  <p><strong><span class="order_id_title">Order ID <%= order.id %></strong></span></br>
+  <%= format_time(order.created_at) %></p>
   <% order.items.each do |item| %>
     <!-- Need to change this to link to the individual item eventually -->
-    <p><%= quantity_of_item(item, order) %>
+    <li><%= quantity_of_item(item, order) %>
     <%= link_to item.display_name, menu_item_path(item) %>:
-    <%= number_to_currency(line_item_price(item, order)) %></p>
+    <%= number_to_currency(line_item_price(item, order)) %></li>
   <% end %>
-  <p>Total: <%= number_to_currency(order.total_price) %></p>
-  <p>Status: <%= order.status %></p>
-  <% if order_completed_or_cancelled?(order) %>
-    <p><%= "Your order was " + order.status + " at " + format_time(order.updated_at) %></p>
+  <br/><p><strong>Total</strong>: <%= number_to_currency(order.total_price) %><br/>
+  <strong>Status:</strong> <em><%= order.status %></em> as of <%= format_time(order.updated_at) %>
+  <% if order_completed_or_cancelled?(order) %></p><br/><br/>
   <% end %>
 <% end %>
+
