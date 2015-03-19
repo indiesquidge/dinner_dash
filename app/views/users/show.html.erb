@@ -11,6 +11,6 @@
   <p>Total: <%= number_to_currency(order.total_price) %></p>
   <p>Status: <%= order.status %></p>
   <% if order_completed_or_cancelled?(order) %>
-    <p><%= "Your order was " + order.status + " at " + format_time(order.updated_at) %></p>
+    <p><%= "Your order was " + order.status + " on " + format_time(order.updated_at) %></p>
   <% end %>
 <% end %>
