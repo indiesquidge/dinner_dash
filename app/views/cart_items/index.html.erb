@@ -2,6 +2,7 @@
 
 <% @cart.display_items.each do |item,quantity| %>
   <div class="col-sm-4" id="checkout-item">
+    <%= image_tag item.image.url, class: "menu-image image-background"%><br/>
     <%= link_to item.display_name, menu_item_path(item) %><br>
     Quantity: <%= quantity %><br>
     Price Per Unit: <%= number_to_currency(item.price) %><br>
