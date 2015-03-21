@@ -31,6 +31,4 @@ group :development, :test do
   gem "faker"
   gem "simplecov", require: false
   gem "codeclimate-test-reporter", require: nil
-  gem 'poltergeist'
 end
-

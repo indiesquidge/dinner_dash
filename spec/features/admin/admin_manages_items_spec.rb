@@ -86,15 +86,15 @@ RSpec.describe "admin managing items", type: :feature do
     # expect(page).to have_css("img[alt='Cookie monster']")
   end
 
-  xit "can retire an item" do
+  it "can retire an item" do
     create_admin_user
     item = create(:item)
     item.categories << create(:category)
     visit edit_menu_item_path(item)
-    page.execute_script("$('#item_status').val('retired')")
+    select 'retired', from: 'item_status'
     click_link_or_button "Submit"
     expect(page).to have_content("Item has been successfully updated!")
-    expect(item.status).to eq("retired")
+    expect(item.reload.status).to eq("retired")
   end
 
   private
