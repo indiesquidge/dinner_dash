@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "user visits account", type: :feature do
   it "can see order details and click on order items" do
-    user = create(:user)
+    user = create(:user, email: "cat@example.com")
     order = create(:order)
     item = create(:item)
     order.items << item
