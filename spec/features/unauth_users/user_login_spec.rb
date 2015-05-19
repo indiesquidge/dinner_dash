@@ -4,15 +4,7 @@ require "support/factory_girl"
 RSpec.feature "Unauthenticated user", type: :feature do
   it "cannot view account page until logged in" do
     visit account_path
-    within ("div.alert-warning") do
-      expect(page).to have_content("You must sign in")
-    end
-    expect(page).to have_content("Sign in")
-    sign_in
-    within ("div.alert-info") do
-      expect(page).to have_content("Sign in successful")
-    end
-    expect(page).to have_content("Account")
+    expect(page).to have_content("You must sign in")
   end
 
   it "cannot sign_in with incorrect email or password" do

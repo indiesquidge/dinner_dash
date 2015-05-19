@@ -47,7 +47,7 @@ RSpec.describe "user managing cart", type: :feature do
     create_item_and_add_to_cart
     visit cart_path
     expect(page).to have_content("Quantity: 1")
-    visit account_path
+    visit login_path
     user_sign_in
     visit cart_path
     expect(page).to have_content("Quantity: 1")
