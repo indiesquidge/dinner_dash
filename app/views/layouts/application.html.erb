@@ -33,15 +33,15 @@
                   </li>
                 </ul>
               </li>
-              <li><%= link_to "Account", account_path %><span class="sr-only"></span></li>
               <li><%= link_to "<span class='glyphicon glyphicon-shopping-cart' aria-hidden='true'>".html_safe, cart_path %></li>
                 <% if current_user.try(:role) == "admin" %>
                 <li><%= link_to "Dashboard", admin_dashboard_path %><span class="sr-only"></span></li>
                 <% end %>
                 <% if current_user %>
-                <li><%= link_to "Sign out", logout_path, method: :delete %></li>
+                  <li><%= link_to "Account", account_path %><span class="sr-only"></span></li>
+                  <li><%= link_to "Sign out", logout_path, method: :delete %></li>
                 <% else %>
-                <li><%= link_to "Sign in", login_path %></li>
+                    <li><%= link_to "Sign in", login_path %></li>
                 <% end %>
               </ul>
             </div><!-- /.navbar-collapse -->
