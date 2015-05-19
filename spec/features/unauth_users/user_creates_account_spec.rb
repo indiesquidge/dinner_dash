@@ -2,7 +2,7 @@ require "rails_helper"
 require "support/factory_girl"
 
 RSpec.feature "Unauthenticated user can create an account", type: :feature do
-	it "can successfully create a new account" do
+  it "can successfully create a new account" do
 		visit login_path
 		click_link_or_button("Create an account here.")
 		fill_in("user[first_name]", with: "Richard")

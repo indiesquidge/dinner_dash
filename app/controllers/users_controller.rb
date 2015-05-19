@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def show
     if current_user.nil?
-      redirect_to login_path, alert: "You must sign in" 
+      redirect_to login_path, alert: "You must sign in"
     else
       @orders = Order.where(user_id: current_user.id)
     end
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def create
-     @user = User.new(user_params)
+    @user = User.new(user_params)
     if @user.save
       sign_in
     else
