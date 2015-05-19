@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     if current_user.nil?
       redirect_to login_path, alert: "You must sign in" 
     else
-      @orders = Order.where(user_id: current_user.id) if authorize
+      @orders = Order.where(user_id: current_user.id)
     end
   end
 
