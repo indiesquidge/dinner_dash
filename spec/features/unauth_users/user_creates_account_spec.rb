@@ -12,7 +12,7 @@ RSpec.feature "Unauthenticated user can create an account", type: :feature do
 		fill_in("user[password_confirmation]", with: "password")
 		click_link_or_button("Submit")
 		expect(page).to have_content "My Account"
-	end
+  end
 
 	it "cannot create a new account with a missing first name" do
 		visit new_user_path
