@@ -45,8 +45,6 @@ GEM
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (3.2.0.2)
-      sass (~> 3.2)
     builder (3.2.2)
     byebug (3.5.1)
       columnize (~> 0.8)
@@ -236,7 +234,6 @@ DEPENDENCIES
   autoprefixer-rails
   awesome_print
   bcrypt
-  bootstrap-sass (~> 3.2.0)
   byebug
   cancancan
   capybara
@@ -262,3 +259,6 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   unicorn
   web-console (~> 2.0)
+
+BUNDLED WITH
+   1.10.5
